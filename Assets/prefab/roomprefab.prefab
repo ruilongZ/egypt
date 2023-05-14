@@ -451,13 +451,12 @@ MonoBehaviour:
   enemyNum: 0100000001000000
   boss: {fileID: 0}
   rewardgod:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4643896680313291135, guid: 7066d087ba8c5ad4db3880c6778a2f2d, type: 3}
+  - {fileID: 6896132764857399454, guid: 221378d0825dc0f4489bf40b1e5f44b3, type: 3}
+  - {fileID: 8389914190611590198, guid: dee4c228f091a6746831ed711aabd0d2, type: 3}
+  - {fileID: 1528533950649815435, guid: 897767d6d68a36c499e70dbfce70f74d, type: 3}
+  - {fileID: 8499453955836202695, guid: ab16ccdafe22be54593d22e7ec8f91fb, type: 3}
+  - {fileID: 4766928471402365356, guid: 92f60550f98529a4f8d44bdc2d776ddf, type: 3}
   shop: {fileID: 4545025052391843142, guid: ea64fa0006f0e3c42991bda0b5d02816, type: 3}
   fairy:
   - {fileID: 0}

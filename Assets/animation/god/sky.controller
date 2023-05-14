@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 77e3043bac6fe3646b630acd213b548b, type: 2}
+  m_Motion: {fileID: 7400000, guid: eae599bc8a7f41746a723525bae53b72, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -57,7 +57,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: earth
+  m_Name: sky
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -116,7 +116,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 101f4858aa6d84d4bb5a9f0268845c80, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3c4bf8ed034ab77439572b3bb5bc6a76, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

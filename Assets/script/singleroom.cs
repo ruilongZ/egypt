@@ -130,7 +130,7 @@ public class singleroom : MonoBehaviour
     }
     public void GenerateRewardGod()
     {
-        Instantiate(rewardgod[Random.Range(0,rewardgod.Length+1)], Vector3.zero, Quaternion.identity);
+        Instantiate(rewardgod[Random.Range(0,rewardgod.Length+1)], transform.position, Quaternion.identity);
     }
     public void GenerateFairy()
     {
