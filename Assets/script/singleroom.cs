@@ -57,7 +57,7 @@ public class singleroom : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") {
+        if (other.name == "player") {
          PlayerIsInRoom = true;
             roomcontrol.GetComponent<roomcontrol>().SetAllRoomCamPointDisable();
             CamVC.enabled = true;
@@ -71,7 +71,8 @@ public class singleroom : MonoBehaviour
                         GenerateShop();
                         break;
                     case RoomKind.BossRoom:
-                        GenerateBoss();
+                        StartCoroutine("CloseAllDoor");
+                        StartCoroutine("GenerateBoss");
                         break;
                     case RoomKind.RewardRoom:
                         GenerateRewardGod();
@@ -81,7 +82,7 @@ public class singleroom : MonoBehaviour
                         break;
                     case RoomKind.EnemyRoom:
                         StartCoroutine("CloseAllDoor");
-                        GenerateEnemy();
+                        StartCoroutine("GenerateEnemy");
                         break;
                 }
 
@@ -111,17 +112,19 @@ public class singleroom : MonoBehaviour
         Vector3 point = new Vector3(Random.Range(transform.position.x-8, transform.position.x +8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
         return point;
     }
-    public void GenerateEnemy() {
-        for (int i = 0; i <= enemyNum[0]; i++) {
+    IEnumerator GenerateEnemy() {
+        yield return new WaitForSeconds(0.8f);
+        for (int i = 0; i < enemyNum[0]; i++) {
             Instantiate(enemy[0], GetRandomPointInRoom(), Quaternion.identity);
         }
-        for (int i = 0; i <= enemyNum[1]; i++)
+        for (int i = 0; i < enemyNum[1]; i++)
         {
             Instantiate(enemy[1], GetRandomPointInRoom(), Quaternion.identity);
         }
     }
-    public void GenerateBoss()
+    IEnumerator GenerateBoss()
     {
+        yield return new WaitForSeconds(0.8f);
         Instantiate(boss, transform.position, Quaternion.identity);
     }
     public void GenerateShop()
@@ -130,7 +133,7 @@ public class singleroom : MonoBehaviour
     }
     public void GenerateRewardGod()
     {
-        Instantiate(rewardgod[Random.Range(0,rewardgod.Length+1)], transform.position, Quaternion.identity);
+        Instantiate(rewardgod[Random.Range(0,rewardgod.Length)], transform.position, Quaternion.identity);
     }
     public void GenerateFairy()
     {

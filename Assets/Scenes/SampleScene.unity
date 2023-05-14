@@ -2107,7 +2107,7 @@ MonoBehaviour:
   downbullet: {fileID: 4858096122796241298, guid: 9ae022257957f07448891ac322427f77, type: 3}
   leftbullet: {fileID: 4858096122796241298, guid: 7ca27eda2af763d4bb692a8e09526803, type: 3}
   FirePosition: {fileID: 1494763273}
-  FiringRate: 0.4
+  FiringRate: 0.6
   damage: 1
   BulletRange: 0.9
   BulletSpeed: 8
