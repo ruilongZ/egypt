@@ -31,6 +31,7 @@ public class MummyAnimationControl : MonoBehaviour
             mummyAnimator.SetTrigger("attacked");
             if (life<=0) {
                 mummyAnimator.SetTrigger("die");
+                gameObject.GetComponent<CapsuleCollider>().enabled = false;
                 GetComponentInParent<EnemyMovementNew>().die = true;
                 Destroy(GetComponentInParent<EnemyMovementNew>().gameObject, 0.7f);
             }

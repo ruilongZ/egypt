@@ -37,6 +37,7 @@ public class BatAnimationControl : MonoBehaviour
             if (life <= 0)
             {
                 batAnimator.SetTrigger("die");
+                gameObject.GetComponent<CapsuleCollider>().enabled = false;
                 GetComponentInParent<EnemyMovementNew>().die = true;
                 Destroy(GetComponentInParent<EnemyMovementNew>().gameObject, 0.7f);
             }

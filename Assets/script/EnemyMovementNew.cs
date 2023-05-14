@@ -48,7 +48,6 @@ public class EnemyMovementNew : MonoBehaviour
             {
                 currentspeed = 0;
                 WaitToAttack();
-
             }
             else {
                 currentspeed = speed;
