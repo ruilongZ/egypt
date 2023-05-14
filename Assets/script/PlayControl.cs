@@ -25,7 +25,15 @@ public class PlayControl : MonoBehaviour
     {
         if (other.tag == "enemybullet"|| other.tag == "Enemy")
         {
-            currentlife -= 1;
+            switch(other.tag){
+                case "enemybullet":
+                    currentlife -= other.GetComponent<Batbulletcontrol>().damage;
+                    break;
+                case "Enemy":
+                    currentlife -= 5;
+                    break;
+            }
+
             playerAnimator.SetTrigger("attacked");
             if (currentlife <= 0)
             {

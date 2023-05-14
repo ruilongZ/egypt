@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Batbulletcontrol : MonoBehaviour
 {
+    public float damage;
     GameObject player;
     Vector3 dir;
     Animator animator;
