@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayControl : MonoBehaviour
 {
     [Header("Íæ¼Ò»ù´¡")]
-    public float life;
+    public float currentlife;
+    public float maxlife;
     Animator playerAnimator;
     bool die;
      void Start()
     {
+        currentlife = maxlife;
         playerAnimator = GetComponent<Animator>();
     }
     private void Update()
@@ -22,9 +25,9 @@ public class PlayControl : MonoBehaviour
     {
         if (other.tag == "enemybullet"|| other.tag == "Enemy")
         {
-            life -= 1;
+            currentlife -= 1;
             playerAnimator.SetTrigger("attacked");
-            if (life <= 0)
+            if (currentlife <= 0)
             {
                 die = true;
                 playerAnimator.SetTrigger("die");
