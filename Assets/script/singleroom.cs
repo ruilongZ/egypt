@@ -113,7 +113,7 @@ public class singleroom : MonoBehaviour
         return point;
     }
     IEnumerator GenerateEnemy() {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < enemyNum[0]; i++) {
             Instantiate(enemy[0], GetRandomPointInRoom(), Quaternion.identity);
         }
@@ -124,7 +124,7 @@ public class singleroom : MonoBehaviour
     }
     IEnumerator GenerateBoss()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(boss, transform.position, Quaternion.identity);
     }
     public void GenerateShop()
