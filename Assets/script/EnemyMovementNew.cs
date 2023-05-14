@@ -31,6 +31,8 @@ public class EnemyMovementNew : MonoBehaviour
         EnemyController = GetComponent<CharacterController>();
         player = GameObject.FindGameObjectWithTag("Player");
         currentspeed = speed;
+        AttackCD = Random.Range(AttackCD - 0.5f, AttackCD + 0.5f);
+        speed = Random.Range(speed - 0.5f, speed + 0.5f);
     }
 
     // Update is called once per frame

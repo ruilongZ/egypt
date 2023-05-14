@@ -314,10 +314,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6157cc8208b184d972a706fb849c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3
   movedir: {x: 0, y: 0, z: 0}
   IsCloseCombat: 1
+  die: 0
   DistanceToAttack: 5
   currentspeed: 0
+  AttackCD: 0
+  BatBullet: {fileID: 0}
   distanceToPlayer: 0
   attacted: 0

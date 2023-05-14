@@ -112,16 +112,12 @@ public class singleroom : MonoBehaviour
         return point;
     }
     public void GenerateEnemy() {
-
-        if (enemyNum[0]>0) {
+        for (int i = 0; i <= enemyNum[0]; i++) {
             Instantiate(enemy[0], GetRandomPointInRoom(), Quaternion.identity);
-            enemyNum[0]--;
         }
-
-        if (enemyNum[1] > 0)
+        for (int i = 0; i <= enemyNum[1]; i++)
         {
             Instantiate(enemy[1], GetRandomPointInRoom(), Quaternion.identity);
-            enemyNum[1]--;
         }
     }
     public void GenerateBoss()

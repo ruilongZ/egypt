@@ -15,7 +15,7 @@ public class Batbulletcontrol : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         dir = player.transform.position + player.GetComponent<PlayerMovementNew>().dir-transform.position;
         animator = GetComponent<Animator>();
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1.5f);
     }
 
     // Update is called once per frame
