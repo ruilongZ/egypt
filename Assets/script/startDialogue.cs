@@ -57,21 +57,17 @@ public class startDialogue : MonoBehaviour
         {
             sum += RewardingAndRate[i].rate;
         }
-        Debug.Log(sum);
         int k = Random.Range(0,sum);
-        Debug.Log(k);
         int j = RewardingAndRate[0].rate;
         for (int i = 0; i <RewardingAndRate.Length; i++)
         {
             if (k <= j)
             {
-                Debug.Log(101);
                 Instantiate(RewardingAndRate[i].reward, transform.position, Quaternion.identity);
                 break;
             }
             else {
                 j += RewardingAndRate[i+1].rate;
-                Debug.Log(j);
             }
         }
     }

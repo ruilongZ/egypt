@@ -52,7 +52,7 @@ public class BulletMovementNew : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="block"|| other.tag == "Enemy") {
+        if (other.tag=="block"|| other.tag == "Enemy" || other.tag == "boss") {
             blocked = true;
             StartCoroutine("DestoryBullet");
         }

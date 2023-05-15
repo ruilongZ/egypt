@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class rotmonster1p : MonoBehaviour
@@ -7,6 +8,7 @@ public class rotmonster1p : MonoBehaviour
     [Header("基础参数")]
     public float life;
     GameObject player;
+    public GameObject rotmonsterp2;
 
     [Space]
     [Header("机制参数")]
@@ -146,12 +148,15 @@ public class rotmonster1p : MonoBehaviour
     }
     void die()
         {
-
+        Instantiate(rotmonsterp2,transform.position-Vector3.right*Random.Range(1.5f,3f)+Vector3.up*Random.Range(-2,2),Quaternion.identity);
+        Instantiate(rotmonsterp2, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
+        Destroy(gameObject,2f);
         }
         void OnTriggerEnter(Collider other)
         {
             if (other.tag == "playerbullet")
             {
+            life -= other.GetComponent<BulletMovementNew>().damage;
                 currenthit++;
                 if (currenthit == hitcount)
                 {
