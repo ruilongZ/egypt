@@ -10,7 +10,6 @@ public class BulletMovementNew : MonoBehaviour
     public float damage;
     GameObject player;
     float passtime;
-    SpriteRenderer spritelayer;
     public Vector3 Offset;
     Animator animator;
     SphereCollider selfcollider;
@@ -19,7 +18,6 @@ public class BulletMovementNew : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        spritelayer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         selfcollider = GetComponent<SphereCollider>();
         damage = player.GetComponent<PlayerMovementNew>().damage;

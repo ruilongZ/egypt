@@ -2,35 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotmonoster2p : MonoBehaviour
+public class rotmonster3pright : MonoBehaviour
 {
     Animator animator;
 
     [Header("基础参数")]
-    GameObject monster1;
-    public float life;
+    GameObject monster2;
+    float life;
     GameObject player;
     public GameObject rotmonsterp3;
 
     [Space]
     [Header("机制参数")]
-    public int hitcount;
     public GameObject bullet;
-    public GameObject bat;
     public float bulletTime;
     public float RestTime;
-    public float spawnTime;
-    public float SwitchSkillCD;
+    public float spawnDurationTime;
 
     [Space]
     [Header("发射子弹技能")]
     public float bulletCD;
     [Space]
-    [Header("生成怪物技能")]
-    public float spwanCD;
+    [Header("冲撞技能")]
+    float sprintspeed;
+    public float maxsprintspeed;
+    public float speeddamping;
+    public int sprintTime;
+    int currentsprintTime;
 
     float passtime;
-    int currenthit;
     float skillpasstime;
     bool switchskilltobullet;
     bool switchskilltospawn;
@@ -41,8 +41,8 @@ public class Rotmonoster2p : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        monster1 = GameObject.Find("RotMonsterP1");
-        life = monster1.GetComponent<rotmonster1p>().life;
+        monster2 = GameObject.Find("RotMonsterP2Right(Clone)");
+        life = monster2.GetComponent<Rotmonoster2p>().life;
         player = GameObject.Find("player");
         switchskilltobullet = true;
         bullettospawn = false;
@@ -97,8 +97,8 @@ public class Rotmonoster2p : MonoBehaviour
         if (!switchskilltobullet && switchskilltospawn && !switchskilltorest)
         {
             animator.SetTrigger("skill2start");
-            spawnbat();
-            if (skillpasstime < spawnTime)
+            sprinttoplayer();
+            if (skillpasstime < spawnDurationTime)
             {
                 skillpasstime += Time.deltaTime;
             }
@@ -116,6 +116,7 @@ public class Rotmonoster2p : MonoBehaviour
     {
         animator.SetTrigger("skill1end");
         animator.SetTrigger("skill2end");
+        currentsprintTime = 0;
     }
 
     void bulletattack()
@@ -126,42 +127,37 @@ public class Rotmonoster2p : MonoBehaviour
         }
         else
         {
-                Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(bullet, transform.position, Quaternion.identity);
             passtime = 0;
         }
     }
-    void spawnbat()
+    void sprinttoplayer()
     {
-        if (passtime < spwanCD)
+        if (currentsprintTime < sprintTime)
         {
-            passtime += Time.deltaTime;
+            if (sprintspeed < 0.5)
+            {
+                currentsprintTime++;
+                sprintspeed = maxsprintspeed;
+            }
+            else
+            {
+                transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
+                sprintspeed = Mathf.Lerp(sprintspeed, 0, Time.deltaTime * speeddamping);
+            }
         }
-        else
-        {
-            Instantiate(bat, GetRandomPointInRoom(), Quaternion.identity);
-            passtime = 0;
-        }
+    }
 
-    }
-    Vector3 GetRandomPointInRoom()
-    {
-        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
-        return point;
-    }
     void die()
     {
-        for (int i=0;i<2;i++) {
-            Instantiate(rotmonsterp3, GetRandomPointInRoom(), Quaternion.identity);
-        }
-        Destroy(gameObject, 2.5f);
+        Destroy(gameObject, 1.5f);
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "playerbullet")
         {
             life -= other.GetComponent<BulletMovementNew>().damage;
-            currenthit++;
-            if (currenthit == hitcount)
+            if (life <= 0)
             {
                 die();
                 animator.SetTrigger("die");

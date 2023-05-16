@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class rotmonster1p : MonoBehaviour
 {
+    Animator animator;
+
     [Header("基础参数")]
     public float life;
     GameObject player;
-    public GameObject rotmonsterp2;
+    public GameObject rotmonsterleft;
+    public GameObject rotmonsterright;
+
 
     [Space]
     [Header("机制参数")]
@@ -37,9 +41,11 @@ public class rotmonster1p : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         player = GameObject.Find("player");
         switchskilltorain = true;
-        raintospray =false;
+        raintospray = false;
     }
 
     // Update is called once per frame
@@ -47,6 +53,7 @@ public class rotmonster1p : MonoBehaviour
     {
         if (switchskilltorain && !switchskilltospray && !switchskilltorest)
         {
+            animator.SetTrigger("startskill1");
             skillrain();
             if (skillpasstime < RainTime)
             {
@@ -78,7 +85,8 @@ public class rotmonster1p : MonoBehaviour
                     switchskilltorest = false;
                     switchskilltospray = true;
                 }
-                else {
+                else
+                {
                     switchskilltorain = true;
                     switchskilltorest = false;
                     switchskilltospray = false;
@@ -88,6 +96,7 @@ public class rotmonster1p : MonoBehaviour
 
         if (!switchskilltorain && switchskilltospray && !switchskilltorest)
         {
+            animator.SetTrigger("startskill2");
             skillspray();
             if (skillpasstime < SprayTime)
             {
@@ -105,14 +114,15 @@ public class rotmonster1p : MonoBehaviour
     }
     void rest()
     {
-
+        animator.SetTrigger("endskill2");
+        animator.SetTrigger("endskill1");
     }
 
     void skillrain()
     {
         if (passtime < raincd)
         {
-            passtime+=Time.deltaTime;
+            passtime += Time.deltaTime;
         }
         else
         {
@@ -123,45 +133,46 @@ public class rotmonster1p : MonoBehaviour
             passtime = 0;
         }
     }
-        void skillspray()
+    void skillspray()
+    {
+        if (passtime < spraycd)
         {
-            if (passtime < spraycd)
-            {
-                passtime+=Time.deltaTime;
-            }
-            else
-            {
-                Instantiate(spray, GetRandomPointInRoom(), Quaternion.identity);
-                passtime = 0;
-            }
+            passtime += Time.deltaTime;
+        }
+        else
+        {
+            Instantiate(spray, GetRandomPointInRoom(), Quaternion.identity);
+            passtime = 0;
+        }
 
-        }
-        Vector3 GetRandomPointInRoom()
-        {
-            Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
-            return point;
-        }
+    }
+    Vector3 GetRandomPointInRoom()
+    {
+        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
+        return point;
+    }
     Vector3 GetRandomPointAroundPlayer()
     {
-        Vector3 point = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range( -1.5f,1.5f), 0);
+        Vector3 point = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 0);
         return point;
     }
     void die()
+    {
+        Instantiate(rotmonsterleft, transform.position - Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
+        Instantiate(rotmonsterright, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
+        Destroy(gameObject, 2f);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "playerbullet")
         {
-        Instantiate(rotmonsterp2,transform.position-Vector3.right*Random.Range(1.5f,3f)+Vector3.up*Random.Range(-2,2),Quaternion.identity);
-        Instantiate(rotmonsterp2, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
-        Destroy(gameObject,2f);
-        }
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "playerbullet")
-            {
             life -= other.GetComponent<BulletMovementNew>().damage;
-                currenthit++;
-                if (currenthit == hitcount)
-                {
-                    die();
-                }
+            currenthit++;
+            if (currenthit == hitcount)
+            {
+                die();
+                animator.SetTrigger("die");
             }
         }
+    }
 }
