@@ -36,16 +36,18 @@ public class Rotmonoster2p : MonoBehaviour
     bool switchskilltospawn;
     bool switchskilltorest;
     bool bullettospawn;
+    GameObject center;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        monster1 = GameObject.Find("RotMonsterP1");
+        monster1 = GameObject.Find("RotMonsterP1(Clone)");
         life = monster1.GetComponent<rotmonster1p>().life;
         player = GameObject.Find("player");
         switchskilltobullet = true;
         bullettospawn = false;
+        center = GameObject.Find("boss1(Clone)");
     }
 
     // Update is called once per frame
@@ -145,15 +147,18 @@ public class Rotmonoster2p : MonoBehaviour
     }
     Vector3 GetRandomPointInRoom()
     {
-        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
+        Vector3 point = new Vector3(Random.Range(19.2f - 6, 19.2f + 6), Random.Range(43.2f - 3, 43.2f + 3), 0);
         return point;
     }
     void die()
     {
-        for (int i=0;i<2;i++) {
             Instantiate(rotmonsterp3, GetRandomPointInRoom(), Quaternion.identity);
-        }
+        StartCoroutine("spawnmonster");
         Destroy(gameObject, 2.5f);
+    }
+    IEnumerator spawnmonster() {
+        yield return new WaitForSeconds(2);
+        Instantiate(rotmonsterp3, GetRandomPointInRoom(), Quaternion.identity);
     }
     void OnTriggerEnter(Collider other)
     {

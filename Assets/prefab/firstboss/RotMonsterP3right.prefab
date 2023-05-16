@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 01a86b662debf8c4fb4718e9562d495b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,15 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf8aa35c015f1b43a1cd35d6c03ec08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotmonsterp3: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletTime: 7
+  bullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
+  bulletTime: 10
   RestTime: 3
-  spawnDurationTime: 18
-  bulletCD: 0.3
-  maxsprintspeed: 11
-  speeddamping: 0.6
-  sprintTime: 6
+  spawnDurationTime: 8
+  bulletCD: 0.2
+  maxsprintspeed: 7
+  speeddamping: 0.5
+  sprintTime: 4
 --- !u!1 &2669307581640332991
 GameObject:
   m_ObjectHideFlags: 0

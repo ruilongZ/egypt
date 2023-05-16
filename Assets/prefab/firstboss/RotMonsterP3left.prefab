@@ -161,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 01a86b662debf8c4fb4718e9562d495b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -214,14 +214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b39df90469fb6488a1e68739cb2aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotmonsterp3: {fileID: 4159324591778075401, guid: 65299c96db70e7b448e1d65b4cd3abfc, type: 3}
   bullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
   bulletTime: 7
   RestTime: 3
-  spawnDurationTime: 18
+  spawnDurationTime: 10
   bulletCD: 0.3
-  maxsprintspeed: 11
-  speeddamping: 0.6
+  maxsprintspeed: 8
+  speeddamping: 0.9
   sprintTime: 6
 --- !u!95 &3958606272774957174
 Animator:

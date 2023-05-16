@@ -11,7 +11,6 @@ public class RotMonster3p : MonoBehaviour
     GameObject monster2;
     float life;
     GameObject player;
-    public GameObject rotmonsterp3;
 
     [Space]
     [Header("机制参数")]
@@ -37,6 +36,7 @@ public class RotMonster3p : MonoBehaviour
     bool switchskilltospawn;
     bool switchskilltorest;
     bool bullettospawn;
+    bool isdead;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,10 +45,14 @@ public class RotMonster3p : MonoBehaviour
         monster2 = GameObject.Find("RotMonsterP2Left(Clone)");
         life = monster2.GetComponent<Rotmonoster2p>().life;
         player = GameObject.Find("player");
-        switchskilltobullet = true;
         bullettospawn = false;
+        StartCoroutine("settrue");
     }
-
+    IEnumerator settrue()
+    {
+        yield return new WaitForSeconds(2);
+        switchskilltospawn = true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -111,7 +115,6 @@ public class RotMonster3p : MonoBehaviour
                 switchskilltospawn = false;
             }
         }
-
     }
     void rest()
     {
@@ -136,21 +139,24 @@ public class RotMonster3p : MonoBehaviour
     {
         if (currentsprintTime < sprintTime)
         {
-            if (sprintspeed < 0.5)
+
+            if (sprintspeed < Random.Range(0.08f,0.2f))
             {
                 currentsprintTime++;
-                sprintspeed = maxsprintspeed;
+                sprintspeed = Random.Range(maxsprintspeed - 2, maxsprintspeed );
             }
             else
             {
-                transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
-                sprintspeed = Mathf.Lerp(sprintspeed, 0, Time.deltaTime * speeddamping);
+                if (!isdead) {
+                    transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
+                    sprintspeed = Mathf.Lerp(sprintspeed, 0, Time.deltaTime * speeddamping);
+                }
             }
         }
     }
-
     void die()
     {
+        isdead = true;
         Destroy(gameObject, 1.5f);
     }
     void OnTriggerEnter(Collider other)

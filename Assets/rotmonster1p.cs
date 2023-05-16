@@ -159,8 +159,12 @@ public class rotmonster1p : MonoBehaviour
     void die()
     {
         Instantiate(rotmonsterleft, transform.position - Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
-        Instantiate(rotmonsterright, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
+        StartCoroutine("spawnmonster");
         Destroy(gameObject, 2f);
+    }
+        IEnumerator spawnmonster() {
+        yield return new WaitForSeconds(1);
+        Instantiate(rotmonsterright, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
     }
     void OnTriggerEnter(Collider other)
     {

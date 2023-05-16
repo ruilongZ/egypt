@@ -140,7 +140,7 @@ MonoBehaviour:
   RestTime: 4
   spawnTime: 5
   SwitchSkillCD: 0
-  bulletCD: 1
+  bulletCD: 2
   spwanCD: 2
 --- !u!95 &8458544249977428043
 Animator:
