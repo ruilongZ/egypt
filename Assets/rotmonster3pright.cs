@@ -5,6 +5,7 @@ using UnityEngine;
 public class rotmonster3pright : MonoBehaviour
 {
     Animator animator;
+    Collider collider;
 
     [Header("»ù´¡²ÎÊý")]
     GameObject monster2;
@@ -46,6 +47,7 @@ public class rotmonster3pright : MonoBehaviour
         player = GameObject.Find("player");
         bullettospawn = false;
         StartCoroutine("settrue");
+        collider = GetComponent<Collider>();
     }
     IEnumerator settrue() {
         yield return new WaitForSeconds(2);
@@ -156,6 +158,7 @@ public class rotmonster3pright : MonoBehaviour
 
     void die()
     {
+        collider.enabled = false;
         Destroy(gameObject, 1.5f);
         isdead = true;
     }

@@ -12,6 +12,7 @@ TagManager:
   - boss
   - enemybullet
   - god
+  - bossbullet
   layers:
   - Default
   - TransparentFX

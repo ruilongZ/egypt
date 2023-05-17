@@ -51,7 +51,7 @@ public class singleroom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Enemy")==null) {
+        if (GameObject.FindGameObjectWithTag("Enemy")==null&& GameObject.FindGameObjectWithTag("boss")==null) {
             OpenAllDoor();
         }
     }

@@ -23,7 +23,7 @@ public class PlayControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "enemybullet"|| other.tag == "Enemy")
+        if (other.tag == "enemybullet"|| other.tag == "Enemy"||other.tag=="boss"|| other.tag == "bossbullet")
         {
             switch(other.tag){
                 case "enemybullet":
@@ -31,6 +31,12 @@ public class PlayControl : MonoBehaviour
                     break;
                 case "Enemy":
                     currentlife -= 5;
+                    break;
+                case "boss":
+                    currentlife -= 8;
+                    break;
+                case "bossbullet":
+                    currentlife -= 8;
                     break;
             }
 
@@ -53,5 +59,6 @@ public class PlayControl : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         Destroy(GameObject.FindGameObjectWithTag("enemybullet"));
         Destroy(GameObject.FindGameObjectWithTag("god"));
+        Destroy(GameObject.FindGameObjectWithTag("boss"));
     }
 }

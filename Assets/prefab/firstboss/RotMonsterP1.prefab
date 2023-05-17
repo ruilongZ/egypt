@@ -134,14 +134,14 @@ MonoBehaviour:
   rotmonsterleft: {fileID: 93540178165906287, guid: aa35072f39b1a2848a348cee73f37d7c, type: 3}
   rotmonsterright: {fileID: 8458544249977428040, guid: b27515423235eec4b91935cafe859cdd, type: 3}
   hitcount: 5
-  rain: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
-  spray: {fileID: 4159324591778075401, guid: 65299c96db70e7b448e1d65b4cd3abfc, type: 3}
+  rain: {fileID: 2707081500225021886, guid: 099f8a2b370aeda44a7832b50d510462, type: 3}
+  spray: {fileID: 1585684967429686207, guid: 5f413aeb48769af40bea0c7b7108f562, type: 3}
   RainTime: 10
-  RestTime: 5
-  SprayTime: 10
+  RestTime: 6
+  SprayTime: 8
   SwitchSkillCD: 0
   raincd: 0.6
-  spraycd: 0.2
+  spraycd: 0.4
 --- !u!95 &7408918440316257326
 Animator:
   serializedVersion: 5
