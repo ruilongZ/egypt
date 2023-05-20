@@ -134,13 +134,13 @@ MonoBehaviour:
   life: 0
   rotmonsterp3: {fileID: 2669307581438565904, guid: 0c6d43e0f2d039b41b8c14f8bd2224a3, type: 3}
   hitcount: 6
-  bullet: {fileID: 4772268623933281404, guid: a6038d2acada41a4db8f0b9aee12729d, type: 3}
+  bullet: {fileID: 1517951211255053456, guid: 62291f344f25cbc4ca8362d4a50f87cf, type: 3}
   bat: {fileID: 4169091155759420838, guid: a179f4beb13631b4ca22782bfe9fb481, type: 3}
-  bulletTime: 3
+  bulletTime: 6
   RestTime: 4
-  spawnTime: 5
+  spawnTime: 4
   SwitchSkillCD: 0
-  bulletCD: 2
+  bulletCD: 1
   spwanCD: 2
 --- !u!95 &8458544249977428043
 Animator:

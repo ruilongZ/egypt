@@ -31,8 +31,6 @@ public class PlayerMovementNew : MonoBehaviour
     public float BulletOffset;
     [Space]
     [Header("受击控制")]
-    float hitpasstime;
-
     private float moveuptime;
     private float movedowntime;
     private float movelefttime;
@@ -41,6 +39,10 @@ public class PlayerMovementNew : MonoBehaviour
     private float passtime = 0;
     private bool CanFire ;
     Animator animator;
+
+    [Space]
+    [Header("经济系统")]
+    public int coin;
 
     private CharacterController control;
     void Start()

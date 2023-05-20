@@ -214,11 +214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b39df90469fb6488a1e68739cb2aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
+  bullet: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
   bulletTime: 7
   RestTime: 3
   spawnDurationTime: 10
-  bulletCD: 0.3
+  bulletCD: 3
   maxsprintspeed: 8
   speeddamping: 0.9
   sprintTime: 6

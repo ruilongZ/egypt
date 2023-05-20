@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class singleroom : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class singleroom : MonoBehaviour
     [Header("basic")]
     public bool PlayerIsInRoom = false;
     public RoomKind RoomType=RoomKind.EnemyRoom;
+    public Image smallmap;
     [Space]
     public GameObject[] door=new GameObject[4];
     [Space]
@@ -45,6 +47,7 @@ public class singleroom : MonoBehaviour
     {
         CamVC = GetComponent<CinemachineVirtualCamera>();
         roomcontrol = GameObject.Find("roommanager");
+        smallmap.color = Color.gray;
         OpenAllDoor();
     }
 
@@ -58,7 +61,8 @@ public class singleroom : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "player") {
-         PlayerIsInRoom = true;
+            smallmap.color = Color.white;
+            PlayerIsInRoom = true;
             roomcontrol.GetComponent<roomcontrol>().SetAllRoomCamPointDisable();
             CamVC.enabled = true;
 
@@ -90,7 +94,13 @@ public class singleroom : MonoBehaviour
             }
         }
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "player")
+        {
+            smallmap.color = Color.gray;
+        }
+        }
     public void tofalse() {
         PlayerIsInRoom = false;
     }

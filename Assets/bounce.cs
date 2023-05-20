@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class bounce : MonoBehaviour
+{
+     Vector3 dir;
+    public float speed;
+    bool blocked;
+    private void Start()
+    {
+        dir = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0).normalized;
+    }
+    private void Update()
+    {
+        transform.Translate(dir * speed * Time.deltaTime);
+        if (blocked)
+        {
+            speed = 0;
+        }
+        else {
+            speed = Mathf.Lerp(speed, 0, Time.deltaTime * 1.5f);
+        }
+
+        if (speed < 0.1f) {
+            speed = 0;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="block"|| other.tag == "Enemy") {
+            blocked = true;
+        }
+        if (other.tag == "Player" )
+        {
+            blocked = true;
+            Destroy(gameObject,0.1f);
+        }
+    }
+}

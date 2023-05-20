@@ -13,6 +13,9 @@ TagManager:
   - enemybullet
   - god
   - bossbullet
+  - collection
+  - coin
+  - follow
   layers:
   - Default
   - TransparentFX

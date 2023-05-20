@@ -2,18 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayControl : MonoBehaviour
 {
     [Header("玩家基础")]
     public float currentlife;
     public float maxlife;
+    public float defence;
+    [Space]
+    [Header("UI")]
+    [SerializeField]
+    public Scrollbar bloodbar;
+    public Scrollbar defencebar;
+    public Text defenceNum;
+    public Text coinNum;
+
     Animator playerAnimator;
     bool die;
-     void Start()
+
+    [Space]
+    [Header("经济系统")]
+    public int coin;
+    void Start()
     {
         currentlife = maxlife;
         playerAnimator = GetComponent<Animator>();
+        setbloodbar();
+        setdefencebar();
+        setcionNub();
+        setdefenceNum();
     }
     private void Update()
     {
@@ -23,24 +41,27 @@ public class PlayControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "collection") {
+            coin++;
+            setcionNub();
+        }
         if (other.tag == "enemybullet"|| other.tag == "Enemy"||other.tag=="boss"|| other.tag == "bossbullet")
         {
-            switch(other.tag){
+            playerAnimator.SetTrigger("attacked");
+            switch (other.tag){
                 case "enemybullet":
-                    currentlife -= other.GetComponent<Batbulletcontrol>().damage;
+                    TakeDamage(other.GetComponent<Batbulletcontrol>().damage);
                     break;
                 case "Enemy":
-                    currentlife -= 5;
+                    TakeDamage(5);
                     break;
                 case "boss":
-                    currentlife -= 8;
+                    TakeDamage(8);
                     break;
                 case "bossbullet":
-                    currentlife -= 8;
+                    TakeDamage(10);
                     break;
             }
-
-            playerAnimator.SetTrigger("attacked");
             if (currentlife <= 0)
             {
                 die = true;
@@ -52,6 +73,21 @@ public class PlayControl : MonoBehaviour
             }
         }
     }
+    void TakeDamage(float damage) {
+        if (defence <= 0)
+        {
+            currentlife -= damage;
+            setbloodbar();
+        }
+        else {
+            defence -= damage;
+            setdefenceNum();
+            setdefencebar();
+            if (defence < 0) {
+                defence = 0;
+            }
+        }
+    }
     void Setactivefalse() {
         Destroy(GetComponentInParent<PlayerMovementNew>().gameObject);
     }
@@ -60,5 +96,21 @@ public class PlayControl : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("enemybullet"));
         Destroy(GameObject.FindGameObjectWithTag("god"));
         Destroy(GameObject.FindGameObjectWithTag("boss"));
+    }
+    public void setbloodbar()
+    {
+            bloodbar.size =currentlife / maxlife;
+     }
+    public void setdefencebar()
+    {
+        defencebar.size = defence / 30;
+    }
+    public void setcionNub()
+    {
+        coinNum.text = coin.ToString();
+    }
+    public void setdefenceNum()
+    {
+        defenceNum.text=defence.ToString();
     }
 }

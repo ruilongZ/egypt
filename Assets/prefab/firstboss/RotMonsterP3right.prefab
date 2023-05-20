@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf8aa35c015f1b43a1cd35d6c03ec08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
+  bullet: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
   bulletTime: 10
   RestTime: 3
   spawnDurationTime: 8
-  bulletCD: 0.2
+  bulletCD: 4
   maxsprintspeed: 7
   speeddamping: 0.5
   sprintTime: 4
