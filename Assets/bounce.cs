@@ -28,7 +28,7 @@ public class bounce : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="block"|| other.tag == "Enemy") {
+        if (other.tag=="block") {
             blocked = true;
         }
         if (other.tag == "Player" )

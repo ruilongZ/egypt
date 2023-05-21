@@ -48,12 +48,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardingAndRate:
-  - rate: 10
-    reward: {fileID: 4169091155759420838, guid: a179f4beb13631b4ca22782bfe9fb481, type: 3}
-  - rate: 20
-    reward: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
-  - rate: 70
-    reward: {fileID: 4545025052391843142, guid: ea64fa0006f0e3c42991bda0b5d02816, type: 3}
+  - rate: 3
+    reward: {fileID: 4437258682988619144, guid: 424c937b0cd537e478d776b4a854608a, type: 3}
+  - rate: 3
+    reward: {fileID: 4205035706097731459, guid: bb7b4bbe546fa934f8fc6b29eb27b11c, type: 3}
+  - rate: 30
+    reward: {fileID: 4235828951665536078, guid: 1416ebf441cf31a46a8a17a285bec61a, type: 3}
+  - rate: 30
+    reward: {fileID: 5469276141383386077, guid: 63e5c1ab4d9b6b94ab18d46a6282d902, type: 3}
+  - rate: 30
+    reward: {fileID: 8334338063054581924, guid: 7752cd8425167bc4a964c65208272458, type: 3}
 --- !u!135 &8389914190611590202
 SphereCollider:
   m_ObjectHideFlags: 0

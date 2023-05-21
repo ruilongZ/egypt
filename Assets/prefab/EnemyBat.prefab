@@ -323,4 +323,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39db34c2dd401e0438523792ce70d03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewardingAndRate:
+  - rate: 60
+    reward: {fileID: 6966234579254232616, guid: 769863e72e17d0d49a54993afe6e1477, type: 3}
+  - rate: 15
+    reward: {fileID: 6113654240653110980, guid: 1a530a54d2acf73498e21da372d9eb71, type: 3}
+  - rate: 15
+    reward: {fileID: 8922821540005378138, guid: 85ecb3beb2ead3e4290f1b45022059dc, type: 3}
+  - rate: 4
+    reward: {fileID: 4235828951665536078, guid: 1416ebf441cf31a46a8a17a285bec61a, type: 3}
+  - rate: 3
+    reward: {fileID: 5469276141383386077, guid: 63e5c1ab4d9b6b94ab18d46a6282d902, type: 3}
+  - rate: 3
+    reward: {fileID: 8334338063054581924, guid: 7752cd8425167bc4a964c65208272458, type: 3}
   life: 2

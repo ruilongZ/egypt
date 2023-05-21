@@ -25,7 +25,6 @@ public class startDialogue : MonoBehaviour
 
  void Start()
     {
-        Debug.Log(4 % 2);
         UIanimator = GameObject.FindGameObjectWithTag("dialogue").GetComponent<Animator>();
         playersave = GameObject.FindGameObjectWithTag("playersave");
     }

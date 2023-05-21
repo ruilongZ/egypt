@@ -67,7 +67,6 @@ public class PlayControl : MonoBehaviour
             }
         }
 
-        Debug.Log(GetComponentInParent<PlayerMovementNew>().damage);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -80,7 +79,7 @@ public class PlayControl : MonoBehaviour
             return;
         }
         else {
-            if (other.tag == "enemybullet" || other.tag == "Enemy" || other.tag == "boss" || other.tag == "bossbullet")
+            if (other.tag == "enemybullet" || other.tag == "Enemy" || other.tag == "boss" || other.tag == "bossbullet"|| other.tag == "track")
             {
                 playerAnimator.SetTrigger("attacked");
                 switch (other.tag)
@@ -95,6 +94,9 @@ public class PlayControl : MonoBehaviour
                         TakeDamage(8);
                         break;
                     case "bossbullet":
+                        TakeDamage(10);
+                        break;
+                    case "track":
                         TakeDamage(10);
                         break;
                 }

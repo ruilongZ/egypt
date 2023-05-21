@@ -147,6 +147,6 @@ public class singleroom : MonoBehaviour
     }
     public void GenerateFairy()
     {
-        Instantiate(fairy[0], transform.position, Quaternion.identity);
+        Instantiate(fairy[Random.Range(0,2)], transform.position, Quaternion.identity);
     }
 }
