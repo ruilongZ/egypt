@@ -29,12 +29,25 @@ public class MummyAnimationControl : MonoBehaviour
             life -= other.GetComponentInParent<BulletMovementNew>().damage;
             GetComponentInParent<EnemyMovementNew>().attacted = true;
             mummyAnimator.SetTrigger("attacked");
-            if (life<=0) {
-                mummyAnimator.SetTrigger("die");
-                gameObject.GetComponent<CapsuleCollider>().enabled = false;
-                GetComponentInParent<EnemyMovementNew>().die = true;
-                Destroy(GetComponentInParent<EnemyMovementNew>().gameObject, 0.7f);
+        }
+        if (other.name == "character")
+        {
+
+            if (other.GetComponent<PlayControl>().sprintdamageequip&& other.GetComponent<PlayControl>().ShiftPressed)
+            {
+
+                life -= other.GetComponent<PlayControl>().defence;
+                GetComponentInParent<EnemyMovementNew>().attacted = true;
+                mummyAnimator.SetTrigger("attacked");
             }
         }
+        if (life <= 0)
+        {
+            mummyAnimator.SetTrigger("die");
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInParent<EnemyMovementNew>().die = true;
+            Destroy(GetComponentInParent<EnemyMovementNew>().gameObject, 0.7f);
+        }
     }
+
 }

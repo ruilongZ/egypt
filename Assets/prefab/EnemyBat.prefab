@@ -93,8 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5294048651247968126}
-  - component: {fileID: 7226351166031048531}
   - component: {fileID: 6264584110524155500}
+  - component: {fileID: 8152565461798334252}
   m_Layer: 0
   m_Name: EnemyBat
   m_TagString: Enemy
@@ -119,24 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &7226351166031048531
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4169091155759420838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0.23
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0.03, y: 0.12, z: 0}
 --- !u!114 &6264584110524155500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +141,24 @@ MonoBehaviour:
   BatBullet: {fileID: 4772268623933281404, guid: a6038d2acada41a4db8f0b9aee12729d, type: 3}
   distanceToPlayer: 0
   attacted: 0
+--- !u!143 &8152565461798334252
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169091155759420838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0
+  m_Radius: 0.22
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0.03, y: 0.12, z: 0}
 --- !u!1 &5303995670427769623
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3671959567833736540}
   - component: {fileID: 6406076711285569237}
   m_Layer: 0
-  m_Name: character
+  m_Name: enemycharacter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

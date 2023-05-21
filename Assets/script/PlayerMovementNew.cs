@@ -16,6 +16,9 @@ public class PlayerMovementNew : MonoBehaviour
     [Header("³å´ÌÉÁ±Ü")]
     public float SprintSpeed;
     public float SprintTime;
+
+    public bool havesprintdamageequip;
+    public bool ShiftPressed = false;
     [Space]
     [Header("¹¥»÷¿ØÖÆ")]
     public  GameObject rightbullet;
@@ -35,7 +38,7 @@ public class PlayerMovementNew : MonoBehaviour
     private float movedowntime;
     private float movelefttime;
     private float moverighttime;
-    private bool ShiftPressed = false;
+
     private float passtime = 0;
     private bool CanFire ;
     Animator animator;
@@ -147,7 +150,6 @@ public class PlayerMovementNew : MonoBehaviour
             }
         }
     }
-
     public void Attack() {
         if (Input.GetKeyDown(KeyCode.UpArrow)&&CanFire) {
             Instantiate(upbullet , FirePosition.position, Quaternion.Euler(0,0,90-dir.x* BulletOffset));

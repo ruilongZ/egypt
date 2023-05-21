@@ -16,6 +16,7 @@ TagManager:
   - collection
   - coin
   - follow
+  - sprintbullet
   layers:
   - Default
   - TransparentFX
