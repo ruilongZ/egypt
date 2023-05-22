@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   discribe: "\u51B2\u523A\u65F6\u5C06\u4E0D\u518D\u53D7\u5230\u4F24\u5BB3\uFF0C\u4E14\u5728\u51B2\u523A\u65F6\u649E\u5230\u602A\u7269\u4F1A\u5BF9\u602A\u7269\u9020\u6210\u81EA\u8EAB\u76FE\u503C\u7684\u4F24\u5BB3"
-  distancetoshow: 2
+  distancetoshow: 2.2

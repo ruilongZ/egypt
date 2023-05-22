@@ -28,7 +28,7 @@ public class buy : MonoBehaviour
                 other.transform.GetChild(0).GetComponent<PlayControl>().coin -= price;
                 for (int i = 0; i < rewardNum; i++)
                 {
-                    Instantiate(reward, GameObject.Find("shop").transform.GetChild(1).position, Quaternion.identity);
+                    Instantiate(reward, GameObject.Find("shop1(Clone)").transform.GetChild(1).position, Quaternion.identity);
                 }
                 Destroy(gameObject, 0.2f);
                 showtext.text = "--";

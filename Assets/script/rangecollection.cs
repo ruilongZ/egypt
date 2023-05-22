@@ -8,9 +8,9 @@ public class rangecollection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && other.name == "player")
+        if (other.tag == "Player" && other.name == "character")
         {
-            other.GetComponent<PlayerMovementNew>().BulletRange += rangeadd;
+            other.GetComponentInParent<PlayerMovementNew>().BulletRange += rangeadd;
         }
     }
 }

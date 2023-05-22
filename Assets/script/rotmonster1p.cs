@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class rotmonster1p : MonoBehaviour
 {
+    public Slider bloodslider;
+    public Text bloodtext;
     Animator animator;
+    Collider collider;
 
     [Header("»ù´¡²ÎÊý")]
-    public float life;
+    public float maxlife;
+   public   float currentlife;
     GameObject player;
     public GameObject rotmonsterleft;
     public GameObject rotmonsterright;
@@ -41,6 +46,10 @@ public class rotmonster1p : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        collider = GetComponent<Collider>();
+        currenthit = hitcount;
+        currentlife = maxlife;
+        setui();
         animator = GetComponent<Animator>();
 
         player = GameObject.Find("player");
@@ -156,7 +165,7 @@ public class rotmonster1p : MonoBehaviour
         Vector3 point = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 0);
         return point;
     }
-    void die()
+    void dieandspawn()
     {
         StartCoroutine("leftspawnmonster");
         StartCoroutine("spawnmonster");
@@ -166,7 +175,6 @@ public class rotmonster1p : MonoBehaviour
         yield return new WaitForSeconds(2);
         Instantiate(rotmonsterright, transform.position + Vector3.right * Random.Range(1.5f, 3f) + Vector3.up * Random.Range(-2, 2), Quaternion.identity);
     }
-
     IEnumerator leftspawnmonster()
     {
         yield return new WaitForSeconds(3);
@@ -174,15 +182,36 @@ public class rotmonster1p : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet")
+        if (other.tag == "playerbullet"|| (other.tag == "Player"&&other.name=="character"))
         {
-            life -= other.GetComponent<BulletMovementNew>().damage;
-            currenthit++;
-            if (currenthit == hitcount)
-            {
-                die();
+            switch (other.tag) {
+                case "playerbullet":
+                    currentlife -= other.GetComponent<BulletMovementNew>().damage;
+                    break;
+                case "Player":
+                    currentlife -= other.GetComponent<PlayControl>().defence;
+                    break;
+            }
+
+            currenthit--;
+            if (currentlife<=0) {
+                currentlife = 0;
                 animator.SetTrigger("die");
+                collider.enabled = false;
+                Destroy(gameObject, 2f);
+            }
+            setui();
+            if (currenthit == 0)
+            {
+                animator.SetTrigger("die");
+                collider.enabled = false;
+                dieandspawn();
+
             }
         }
+    }
+    void setui() {
+        bloodtext.text = currentlife.ToString();
+        bloodslider.value = currentlife / maxlife;
     }
 }

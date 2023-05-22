@@ -24,8 +24,8 @@ public class PlayControl : MonoBehaviour
     [Space]
     [Header("UI")]
     [SerializeField]
-    public Scrollbar bloodbar;
-    public Scrollbar defencebar;
+    public Slider bloodbar;
+    public Slider defencebar;
     public Text defenceNum;
     public Text coinNum;
 
@@ -148,11 +148,11 @@ public class PlayControl : MonoBehaviour
     }
     public void setbloodbar()
     {
-            bloodbar.size =currentlife / maxlife;
+            bloodbar.value =currentlife / maxlife;
      }
     public void setdefencebar()
     {
-        defencebar.size = defence / 30;
+        defencebar.value = defence / 30;
     }
     public void setcionNub()
     {

@@ -43,7 +43,7 @@ public class Rotmonoster2p : MonoBehaviour
         animator = GetComponent<Animator>();
 
         monster1 = GameObject.Find("RotMonsterP1(Clone)");
-        life = monster1.GetComponent<rotmonster1p>().life;
+        life = monster1.GetComponent<rotmonster1p>().currentlife;
         player = GameObject.Find("player");
         switchskilltobullet = true;
         bullettospawn = false;

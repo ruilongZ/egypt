@@ -157,4 +157,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   discribe: "\u5C04\u901F\u5C06\u589E\u52A0"
-  distancetoshow: 0
+  distancetoshow: 2.2
