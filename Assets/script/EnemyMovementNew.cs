@@ -30,7 +30,8 @@ public class EnemyMovementNew : MonoBehaviour
     {
         EnemyController = GetComponent<CharacterController>();
         player = GameObject.FindGameObjectWithTag("Player");
-        currentspeed = speed;
+        currentspeed =0;
+
         AttackCD = Random.Range(AttackCD - 0.5f, AttackCD + 0.5f);
         speed = Random.Range(speed - 0.5f, speed + 0.5f);
     }
@@ -41,20 +42,8 @@ public class EnemyMovementNew : MonoBehaviour
         distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         movedir = (player.transform.position - transform.position).normalized;
 
-        if (IsCloseCombat)
-        {
-       currentspeed = speed;
-        }
-        else {
-            if (distanceToPlayer < DistanceToAttack)
-            {
-                currentspeed = 0;
-                WaitToAttack();
-            }
-            else {
-                currentspeed = speed;
-            }
-        }
+        StartCoroutine("setspeed");
+
         if (attacted) {
             Attacked();
         }
@@ -63,6 +52,26 @@ public class EnemyMovementNew : MonoBehaviour
         }
         attackpasstime += Time.deltaTime;
         EnemyController.Move(movedir * currentspeed * Time.deltaTime);
+    }
+
+    IEnumerator setspeed() {
+        yield return new WaitForSeconds(0.8f);
+        if (IsCloseCombat)
+        {
+            currentspeed = speed;
+        }
+        else
+        {
+            if (distanceToPlayer < DistanceToAttack)
+            {
+                currentspeed = 0;
+                WaitToAttack();
+            }
+            else
+            {
+                currentspeed = speed;
+            }
+        }
     }
 
     public void Attacked() {

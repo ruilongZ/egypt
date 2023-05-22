@@ -37,7 +37,6 @@ public class startDialogue : MonoBehaviour
                 playersave.GetComponent<playersave>().AddNpcTime();
                 UIanimator.gameObject.GetComponentInChildren<changeconversation>().ChangeConversation();
                 UIanimator.gameObject.GetComponentInChildren<changeselection>().ChangeConversation();
-                RandomingRate();
             }
         }
     }
@@ -45,6 +44,9 @@ public class startDialogue : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            if (!firsttalk) {
+                RandomingRate();
+            }
             firsttalk = true;
             UIanimator.SetBool("talk", false);
         }

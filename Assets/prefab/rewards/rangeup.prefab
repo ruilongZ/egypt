@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5469276141383386066}
   - component: {fileID: 5469276141383386067}
   - component: {fileID: 5469276141383386076}
+  - component: {fileID: 359626850170461143}
   m_Layer: 0
   m_Name: rangeup
   m_TagString: Untagged
@@ -142,4 +143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d1eaf2bdc88524eb3e888be0e2da79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeadd: 0.8
+  rangeadd: 0.6
+--- !u!114 &359626850170461143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469276141383386077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00f0e25ff12cad40a92ef6adb106676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discribe: "\u5C04\u51FB\u8303\u56F4\u5C06\u5927\u5E45\u5EA6\u63D0\u5347"
+  distancetoshow: 2.2

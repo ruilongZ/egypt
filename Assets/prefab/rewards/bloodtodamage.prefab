@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4437258682988619158}
   - component: {fileID: 530545964136040423}
   - component: {fileID: 530545964136040422}
+  - component: {fileID: 2009104758}
   m_Layer: 0
   m_Name: bloodtodamage
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4437258682988619144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6045e71ff66b5a245b0a278d002f0812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2009104758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437258682988619144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00f0e25ff12cad40a92ef6adb106676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discribe: "\u5F53\u73A9\u5BB6\u635F\u5931\u8840\u91CF\u65F6\uFF0C\u653B\u51FB\u529B\u4F1A\u5728\u4E00\u6BB5\u65F6\u95F4\u5185\u589E\u5F3A\uFF0C\u635F\u5931\u8840\u91CF\u8D8A\u591A\uFF0C\u653B\u51FB\u529B\u8D8A\u9AD8"
+  distancetoshow: 2

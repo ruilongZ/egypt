@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bounce : MonoBehaviour
 {
      Vector3 dir;
     public float speed;
     bool blocked;
+    Text showtext;
     private void Start()
     {
+        showtext = GameObject.Find("mianui").transform.GetChild(2).GetComponent<Text>();
         dir = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0).normalized;
     }
     private void Update()
@@ -34,7 +37,8 @@ public class bounce : MonoBehaviour
         if (other.tag == "Player" )
         {
             blocked = true;
-            Destroy(gameObject,0.1f);
+            Destroy(gameObject,0.2f);
+            showtext.text = "--";
         }
     }
 }

@@ -34,11 +34,17 @@ public class MummyAnimationControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mummyAnimator.SetFloat("x",GetComponentInParent<EnemyMovementNew>().movedir.x*1000);
+        StartCoroutine("setanimator");
         if (GetComponentInParent<EnemyMovementNew>().distanceToPlayer<1.2 && GetComponentInParent<EnemyMovementNew>().IsCloseCombat) {
             mummyAnimator.SetTrigger("attack");
         }
     }
+    IEnumerator setanimator() {
+        yield return new WaitForSeconds(0.8f);
+        mummyAnimator.SetTrigger("move");
+        mummyAnimator.SetFloat("x", GetComponentInParent<EnemyMovementNew>().movedir.x * 1000);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="playerbullet") {

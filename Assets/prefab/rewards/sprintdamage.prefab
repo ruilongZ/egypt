@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4205035706097731484}
   - component: {fileID: 4205035706097731485}
   - component: {fileID: 4205035706097731458}
+  - component: {fileID: 6951816938777176453}
   m_Layer: 0
   m_Name: sprintdamage
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12dbdbc9730e6b49a4da72ed2fb6264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6951816938777176453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205035706097731459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00f0e25ff12cad40a92ef6adb106676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discribe: "\u51B2\u523A\u65F6\u5C06\u4E0D\u518D\u53D7\u5230\u4F24\u5BB3\uFF0C\u4E14\u5728\u51B2\u523A\u65F6\u649E\u5230\u602A\u7269\u4F1A\u5BF9\u602A\u7269\u9020\u6210\u81EA\u8EAB\u76FE\u503C\u7684\u4F24\u5BB3"
+  distancetoshow: 2

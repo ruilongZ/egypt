@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8334338063054581947}
   - component: {fileID: 8334338063054581946}
   - component: {fileID: 8334338063054581925}
+  - component: {fileID: 6814109365598970708}
   m_Layer: 0
   m_Name: rateup
   m_TagString: Untagged
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateadd: 0.12
+--- !u!114 &6814109365598970708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334338063054581924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00f0e25ff12cad40a92ef6adb106676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discribe: "\u5C04\u901F\u5C06\u589E\u52A0"
+  distancetoshow: 0

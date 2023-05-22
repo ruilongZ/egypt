@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4235828951665536080}
   - component: {fileID: 4235828951665536081}
   - component: {fileID: 1342410273}
+  - component: {fileID: 7903929536189558901}
   m_Layer: 0
   m_Name: frictionup
   m_TagString: Untagged
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &7903929536189558901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4235828951665536078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00f0e25ff12cad40a92ef6adb106676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discribe: "\u79FB\u52A8\u65F6\uFF0C\u6ED1\u6B65\u51CF\u5C0F\uFF0C\u80FD\u66F4\u597D\u63A7\u5236\u79FB\u52A8\u4E0E\u6539\u53D8\u65B9\u5411"
+  distancetoshow: 2.2

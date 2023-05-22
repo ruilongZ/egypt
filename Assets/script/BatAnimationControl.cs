@@ -34,7 +34,7 @@ public class BatAnimationControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        batAnimator.SetFloat("x", GetComponentInParent<EnemyMovementNew>().movedir.x * 1000);
+        StartCoroutine("setanimator");
         if (GetComponentInParent<EnemyMovementNew>().currentspeed == 0)
         {
             batAnimator.SetBool("move", false);
@@ -43,6 +43,11 @@ public class BatAnimationControl : MonoBehaviour
             batAnimator.SetBool("move", true);
         }
 
+    }
+
+    IEnumerator setanimator() {
+        yield return new WaitForSeconds(0.8f);
+        batAnimator.SetFloat("x", GetComponentInParent<EnemyMovementNew>().movedir.x * 1000);
     }
     private void OnTriggerEnter(Collider other)
     {

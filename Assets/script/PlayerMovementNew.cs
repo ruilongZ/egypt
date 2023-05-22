@@ -43,10 +43,6 @@ public class PlayerMovementNew : MonoBehaviour
     private bool CanFire ;
     Animator animator;
 
-    [Space]
-    [Header("经济系统")]
-    public int coin;
-
     private CharacterController control;
     void Start()
     {
