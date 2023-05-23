@@ -54,6 +54,9 @@ public class BulletMovementNew : MonoBehaviour
             blocked = true;
             StartCoroutine("DestoryBullet");
         }
+        if (other.name== "sunbossshield") {
+            Destroy(gameObject);
+        }
     }
     public IEnumerator DestoryBullet() {
         animator.SetBool("destory", true);
