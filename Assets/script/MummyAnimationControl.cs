@@ -54,10 +54,8 @@ public class MummyAnimationControl : MonoBehaviour
         }
         if (other.name == "character")
         {
-
             if (other.GetComponent<PlayControl>().sprintdamageequip&& other.GetComponent<PlayControl>().ShiftPressed)
             {
-
                 life -= other.GetComponent<PlayControl>().defence;
                 GetComponentInParent<EnemyMovementNew>().attacted = true;
                 mummyAnimator.SetTrigger("attacked");

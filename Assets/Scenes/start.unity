@@ -3703,7 +3703,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2027750476}
-  - {fileID: 1641580270}
   m_Father: {fileID: 0}
   m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6923,11 +6922,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 832111926}
+    m_TransformParent: {fileID: 2027750476}
     m_Modifications:
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_LocalScale.x
@@ -6959,15 +6958,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860314, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6988,6 +6987,10 @@ PrefabInstance:
     - target: {fileID: 5051541494931860315, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_Name
       value: sunbossshield
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051541494931860315, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5051541494931860316, guid: 40d185831c73bb849a9dd0d73e2883ea, type: 3}
       propertyPath: m_SortingOrder
@@ -7804,7 +7807,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1641580270}
   m_Father: {fileID: 832111926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7869,7 +7873,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 7afe47731c9d0fe4ca00175dbc0010cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7923,12 +7927,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f89a2bae11a1d4cabc27cd103ffc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standdamagetolife: 0
-  maxhitcount: 0
-  turntobirdlife: 0
+  standdamagetolife: 3
+  maxhitcount: 5
+  turntobirdlife: 70
+  firetime: 6
+  RestTime: 3
+  shieldtime: 10
   currentlife: 0
-  maxlife: 0
-  turnlife: 0
+  maxlife: 100
+  shieldvfx: {fileID: 1641580269}
+  mummy: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
+  spawnCD: 2
+  bulletCD: 0.5
+  firebullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
 --- !u!1 &2028550110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1669583590941712185, guid: b8a45733d775eef4a9b9f54c5cf12fd3, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class bouncebulletfromplayer : MonoBehaviour
 {
     public GameObject bouncebullet;
+    public GameObject enemybouncebullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,17 @@ public class bouncebulletfromplayer : MonoBehaviour
     Vector3 hitpoint;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet") {
+        if (other.tag == "playerbullet"|| other.tag == "enemybullet") {
             hitpoint = other.bounds.ClosestPoint(transform.position);
-            Instantiate(bouncebullet, hitpoint, Quaternion.identity);
+            switch (other.tag) {
+                case "playerbullet":
+                    Instantiate(bouncebullet, hitpoint, Quaternion.identity);
+                    break;
+                case "enemybullet":
+                    Instantiate(enemybouncebullet, hitpoint, Quaternion.identity);
+                    break;
+            }
+
         }
     }
 }

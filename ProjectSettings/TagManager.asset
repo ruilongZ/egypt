@@ -18,6 +18,7 @@ TagManager:
   - follow
   - sprintbullet
   - track
+  - damageallbullet
   layers:
   - Default
   - TransparentFX
