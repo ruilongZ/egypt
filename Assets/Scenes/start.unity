@@ -6598,6 +6598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncebullet: {fileID: 4311917559372678394, guid: a5cc9ae2309572f4cb87d257d5f8ab48, type: 3}
+  enemybouncebullet: {fileID: 0}
 --- !u!54 &1641580275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7936,7 +7937,7 @@ MonoBehaviour:
   currentlife: 0
   maxlife: 100
   shieldvfx: {fileID: 1641580269}
-  mummy: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
+  bat: {fileID: 4169091155759420838, guid: a179f4beb13631b4ca22782bfe9fb481, type: 3}
   spawnCD: 2
   bulletCD: 0.5
   firebullet: {fileID: 2984563746066400180, guid: fcf6b7c3bb53c7a4f9c26f01c5b33862, type: 3}
