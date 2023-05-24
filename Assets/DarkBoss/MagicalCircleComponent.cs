@@ -38,6 +38,7 @@ public class MagicalCircleComponent : MonoBehaviour
         if (destroyTimer>=DestroyTime)
         {
             isHitting = false;
+            darkGod.IsCD = true;
             Destroy(this.gameObject);
         }
         else
@@ -58,7 +59,6 @@ public class MagicalCircleComponent : MonoBehaviour
                 //Player Get Damaged
                 player.GetComponentInChildren<PlayControl>().currentlife -= DamagePerSec;
                 //Boss Get Health
-                Debug.Log(darkGod.currentLife);
                 if (darkGod.currentLife+HealRate * DamagePerSec<darkGod.maxlife)
                 {
                     darkGod.currentLife += HealRate * DamagePerSec;
@@ -77,7 +77,7 @@ public class MagicalCircleComponent : MonoBehaviour
    
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "block")
+        if (other.tag == "Player" )
         {
             isHitting = true;
         }
