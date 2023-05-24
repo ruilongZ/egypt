@@ -189,7 +189,10 @@ public class rotmonster1p : MonoBehaviour
                     currentlife -= other.GetComponent<BulletMovementNew>().damage;
                     break;
                 case "Player":
-                    currentlife -= other.GetComponent<PlayControl>().defence;
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        currentlife -= other.GetComponent<PlayControl>().defence;
+                    }
                     break;
             }
 

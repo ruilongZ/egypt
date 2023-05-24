@@ -122,7 +122,10 @@ public class DarkBossState1 : MonoBehaviour
                     currentLife -= other.GetComponent<BulletMovementNew>().damage;
                     break;
                 case "Player":
-                    currentLife -= other.GetComponent<PlayControl>().defence;
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        currentLife -= other.GetComponent<PlayControl>().defence;
+                    }
                     break;
             }
             if (currentLife <= 0)
