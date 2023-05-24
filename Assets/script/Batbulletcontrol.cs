@@ -38,5 +38,8 @@ public class Batbulletcontrol : MonoBehaviour
             Destroy(gameObject, 0.35f);
             die = true;
         }
+        if (other.name=="sunbossshield") {
+            Destroy(gameObject);
+        }
     }
 }
