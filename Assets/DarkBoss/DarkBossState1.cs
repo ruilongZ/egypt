@@ -9,7 +9,7 @@ public class DarkBossState1 : MonoBehaviour
     [Header("机制相关")]
     public float CDTime;
     float cdTimer;
-    bool isCD = true;
+    public bool IsCD = true;
     [Header("技能前摇")]
     public float TimeBefore;
     float beforeTimer;
@@ -64,7 +64,7 @@ public class DarkBossState1 : MonoBehaviour
     {
         if(cdTimer>=CDTime&&!die)
         {
-            isCD = false;
+            IsCD = false;
             cdTimer = 0f;
             switch (currentSkill)
             {
@@ -75,11 +75,11 @@ public class DarkBossState1 : MonoBehaviour
                 case Skill.DoppeLgangerSkill:
                     lastSkill = Skill.DoppeLgangerSkill;
                     return;
-
             }
         }
+
         //CD Time Counter
-        if(isCD)
+        if(IsCD)
         {
             cdTimer += Time.fixedDeltaTime;
         }
@@ -93,7 +93,6 @@ public class DarkBossState1 : MonoBehaviour
         }
     }
 
-
     private IEnumerator SpawnMagicCircle()
     {
         playerPos = player.transform.position;
@@ -103,7 +102,6 @@ public class DarkBossState1 : MonoBehaviour
         Destroy(warning);
         currentMagicCircle=Instantiate(MagicCircle, playerPos+ GetRandomPointAroundPlayer(), player.transform.rotation);
         MagicCircle.GetComponent<MagicalCircleComponent>().DestroyTime = TimeAfter;
-        isCD = true;
     }
 
     Vector3 GetRandomPointAroundPlayer()
@@ -111,6 +109,7 @@ public class DarkBossState1 : MonoBehaviour
         Vector3 point = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 0);
         return point;
     }
+
     //Boss Get Damage
     void OnTriggerEnter(Collider other)
     {
