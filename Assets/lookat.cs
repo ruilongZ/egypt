@@ -9,7 +9,6 @@ public class lookat : MonoBehaviour
     GameObject enemybat;
     public bool playerbullet;
     Vector3 dir;
-    GameObject bat;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +35,18 @@ public class lookat : MonoBehaviour
         float Angle=0;
         if (playerbullet)
         {
-            Angle = Mathf.Atan2(player.transform.position.y + dir.y - transform.position.y, player.transform.position.x + dir.x - transform.position.x) * Mathf.Rad2Deg;
+            Angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x- transform.position.x) * Mathf.Rad2Deg;
         }
         else
         {
-            Angle = Mathf.Atan2(bat.transform.position.y + dir.y - transform.position.y, bat.transform.position.x + dir.x - transform.position.x) * Mathf.Rad2Deg;
+            Angle = Mathf.Atan2(enemybat.transform.position.y- transform.position.y, enemybat.transform.position.x- transform.position.x) * Mathf.Rad2Deg;
         }
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, Angle + 180));
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="block"|| other.tag=="Enemy"||other.tag=="Player") {
+            Destroy(gameObject);
+        }
     }
 }

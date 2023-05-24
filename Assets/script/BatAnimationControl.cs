@@ -51,19 +51,24 @@ public class BatAnimationControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet")
+        if (other.tag == "playerbullet"|| other.name == "character"||other.tag=="damageallbullet")
         {
-            life -= other.GetComponentInParent<BulletMovementNew>().damage;
+            switch (other.tag) {
+                case "playerbullet":
+                    life -= other.GetComponentInParent<BulletMovementNew>().damage;
+                    break;
+                case "Player":
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        life -= other.GetComponent<PlayControl>().defence;
+                    }
+                        break;
+                case "damageallbullet":
+                    life -= 999;
+                    break;
+            }
             GetComponentInParent<EnemyMovementNew>().attacted = true;
             batAnimator.SetTrigger("attacked");
-        }
-        if (other.name=="character")
-        {
-            if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed) {
-                life -= other.GetComponent<PlayControl>().defence;
-                GetComponentInParent<EnemyMovementNew>().attacted = true;
-                batAnimator.SetTrigger("attacked");
-            }
         }
         if (life <= 0)
         {
