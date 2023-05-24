@@ -206,7 +206,6 @@ public class rotmonster1p : MonoBehaviour
                 animator.SetTrigger("die");
                 collider.enabled = false;
                 dieandspawn();
-
             }
         }
     }
