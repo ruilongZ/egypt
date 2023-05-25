@@ -79,7 +79,7 @@ public class PlayControl : MonoBehaviour
             return;
         }
         else {
-            if (other.tag == "enemybullet" || other.tag == "Enemy" || other.tag == "boss" || other.tag == "bossbullet"|| other.tag == "track")
+            if (other.tag == "enemybullet" || other.tag == "Enemy" || other.tag == "boss" || other.tag == "bossbullet"|| other.tag == "track"|| other.tag == "damageallbullet")
             {
                 playerAnimator.SetTrigger("attacked");
                 switch (other.tag)
@@ -97,6 +97,9 @@ public class PlayControl : MonoBehaviour
                         TakeDamage(10);
                         break;
                     case "track":
+                        TakeDamage(10);
+                        break;
+                    case "damageallbullet":
                         TakeDamage(10);
                         break;
                 }
