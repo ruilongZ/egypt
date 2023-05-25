@@ -8032,7 +8032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4719402944571764952, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4719402944571764952, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8087,8 +8087,20 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4719402944571764954, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
+      propertyPath: DoppeCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402944571764954, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
+      propertyPath: Doppelgang
+      value: 
+      objectReference: {fileID: 1748074009285932313, guid: 81bd3451b980c6a4d99727e78db93e8f, type: 3}
+    - target: {fileID: 4719402944571764954, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
       propertyPath: TimeBefore
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402944571764954, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}
+      propertyPath: DoppeIntervalTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3f698176c09a9468e943d58430c3cf, type: 3}

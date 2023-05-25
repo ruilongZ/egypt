@@ -26,7 +26,8 @@ public class Batbulletcontrol : MonoBehaviour
         {
             speed = 0;
         }
-        else {
+        else 
+        {
             speed = Random.Range(0.9f, 1.2f);
         }
         transform.Translate(dir * Time.deltaTime*speed);

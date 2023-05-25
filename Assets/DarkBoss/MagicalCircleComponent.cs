@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.TextCore.Text;
 using UnityEngine;
+using static DarkBossState1;
 
 public class MagicalCircleComponent : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class MagicalCircleComponent : MonoBehaviour
         {
             isHitting = false;
             darkGod.IsCD = true;
+            darkGod.currentSkill = Skill.DoppeLgangerSkill;
             Destroy(this.gameObject);
         }
         else

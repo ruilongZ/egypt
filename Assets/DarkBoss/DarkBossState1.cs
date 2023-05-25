@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -44,6 +45,12 @@ public class DarkBossState1 : MonoBehaviour
     GameObject currentMagicCircle;
     public GameObject Warning;
     GameObject warning;
+    public GameObject Doppelgang;
+    public int DoppeCount;
+    int doppeCount;
+    public float DoppeIntervalTime;
+    float doppeTimer = 0f;
+    public List<DoppelgangerComponent> doppes = new List<DoppelgangerComponent>();
 
     public enum Skill
     {
@@ -58,6 +65,7 @@ public class DarkBossState1 : MonoBehaviour
         collider = GetComponent<Collider>();
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
+        doppeCount = DoppeCount;
     }
 
     void FixedUpdate()
@@ -74,6 +82,7 @@ public class DarkBossState1 : MonoBehaviour
                     return;
                 case Skill.DoppeLgangerSkill:
                     lastSkill = Skill.DoppeLgangerSkill;
+                    doppeCount = 0;
                     return;
             }
         }
@@ -91,6 +100,9 @@ public class DarkBossState1 : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        //Skill 2
+        SpawnDoope();
     }
 
     private IEnumerator SpawnMagicCircle()
@@ -104,9 +116,44 @@ public class DarkBossState1 : MonoBehaviour
         MagicCircle.GetComponent<MagicalCircleComponent>().DestroyTime = TimeAfter;
     }
 
+    void SpawnDoope()
+    {
+        //Spawn Doppelgangs at regular intervals.
+        if (doppeCount < DoppeCount)
+        {
+            if (doppeTimer >= DoppeIntervalTime)
+            {
+                var doppe = Instantiate(Doppelgang, GetRandomPointInRoom(), player.transform.rotation).GetComponent<DoppelgangerComponent>();
+                doppes.Add(doppe);
+                doppeCount++;
+                doppeTimer = 0f;
+            }
+            else
+            {
+                doppeTimer += Time.fixedDeltaTime;
+            }
+        }
+        //When all the doppelgangs died, Destroy them and Change Skill.
+        if (doppeCount == DoppeCount && doppes.Count != 0 && doppes.All(dope => dope.die == true))
+        {
+            foreach (var dope in doppes)
+            {
+                Destroy(dope.gameObject);
+            }
+            doppes.Clear();
+            IsCD = true;
+            currentSkill = Skill.MagicCircleSkill;
+        }
+    }
+
     Vector3 GetRandomPointAroundPlayer()
     {
         Vector3 point = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 0);
+        return point;
+    }
+    Vector3 GetRandomPointInRoom()
+    {
+        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
         return point;
     }
 
