@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class sunbosscontrol : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class sunbosscontrol : MonoBehaviour
     bool switchskilltoflash;
     bool birdswitchskilltorest;
     bool bullettoflash;
+    [SerializeField]
+    [Header("ui相关")]
+    public Slider bloodslider;
+    public Text bloodtext;
     [SerializeField]
     [Header("机制相关")]
     float damageCount;
@@ -65,6 +70,7 @@ public class sunbosscontrol : MonoBehaviour
         animator = GetComponent<Animator>();
         switchskilltofire = true;
         switchskilltobullet = true;
+        setui();
     }
 
     // Update is called once per frame
@@ -256,7 +262,8 @@ public class sunbosscontrol : MonoBehaviour
         }
     }
     void die() {
-        Destroy(transform.parent.gameObject);
+        animator.SetTrigger("die");
+        Destroy(transform.parent.gameObject,1.5f);
     } 
     private void OnTriggerEnter(Collider other)
     {
@@ -285,6 +292,7 @@ public class sunbosscontrol : MonoBehaviour
                 }
                damageCount = 0;
             }
+            setui();
             if (currentlife<=turntobirdlife) {
                 turntobird();
             }
@@ -292,5 +300,13 @@ public class sunbosscontrol : MonoBehaviour
                 die();
             }
         }
+    }
+    public void setui() {
+        if (currentlife>maxlife) {
+            currentlife = maxlife;
+        }
+        bloodslider.value = currentlife / maxlife;
+        bloodtext.text = currentlife.ToString();
+        
     }
 }
