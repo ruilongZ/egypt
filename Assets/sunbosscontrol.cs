@@ -11,6 +11,12 @@ public class sunbosscontrol : MonoBehaviour
     bool switchskilltorest;
     bool firetoshield;
 
+    float birdskillpasstime;
+    bool switchskilltobullet;
+    bool switchskilltoflash;
+    bool birdswitchskilltorest;
+    bool bullettoflash;
+    [SerializeField]
     [Header("机制相关")]
     float damageCount;
     public float standdamagetolife;
@@ -21,34 +27,44 @@ public class sunbosscontrol : MonoBehaviour
     public float firetime;
     public float RestTime;
     public float shieldtime;
-
-
-
+    [SerializeField]
     [Space]
     [Header("基础参数")]
     public float currentlife;
     public float maxlife;
     Animator animator;
-
+    [SerializeField]
     [Space]
     [Header("护盾技能")]
     public GameObject shieldvfx;
     public GameObject bat;
     float spawnpasstime;
     public float spawnCD;
-
-
+    [SerializeField]
     [Space]
     [Header("爆炸技能")]
     float firepasstime;
     public float bulletCD;
     public GameObject firebullet;
+    [SerializeField]
+    [Space]
+    [Header("鸟子弹技能")]
+    public GameObject birdbigbullet;
+    float bulletpasstime;
+    public float birdbulletCD;
+    [SerializeField]
+    [Space]
+    [Header("鸟闪电技能")]
+    public GameObject birdflash;
+    public float flashCD;
+    float flashpasstime;
     // Start is called before the first frame update
     void Start()
     {
         currentlife = maxlife;
         animator = GetComponent<Animator>();
         switchskilltofire = true;
+        switchskilltobullet = true;
     }
 
     // Update is called once per frame
@@ -58,7 +74,6 @@ public class sunbosscontrol : MonoBehaviour
         {
             if (switchskilltofire && !switchskilltoshield && !switchskilltorest)
             {
-                //animator.SetTrigger("startskill1");
                 fireball();
                 if (skillpasstime < firetime)
                 {
@@ -101,7 +116,6 @@ public class sunbosscontrol : MonoBehaviour
 
             if (!switchskilltofire && switchskilltoshield && !switchskilltorest)
             {
-               // animator.SetTrigger("startskill2");
                 shield();
                 if (skillpasstime < shieldtime)
                 {
@@ -116,11 +130,69 @@ public class sunbosscontrol : MonoBehaviour
                 }
             }
         }
-        else { 
-        
+        else {
+            if (switchskilltobullet && !switchskilltoflash && !birdswitchskilltorest)
+            {
+                birdbullet();
+                if (birdskillpasstime < firetime)
+                {
+                    birdskillpasstime += Time.deltaTime;
+                }
+                else
+                {
+                    birdskillpasstime = 0;
+                    switchskilltobullet = false;
+                    birdswitchskilltorest = true;
+                    switchskilltoflash = false;
+                }
+            }
+
+            if (!switchskilltobullet && !switchskilltoflash && birdswitchskilltorest)
+            {
+                rest();
+                if (birdskillpasstime < RestTime)
+                {
+                    birdskillpasstime += Time.deltaTime;
+                }
+                else
+                {
+                    birdskillpasstime = 0;
+                    bullettoflash = !bullettoflash;
+                    if (bullettoflash)
+                    {
+                        switchskilltobullet = false;
+                        birdswitchskilltorest = false;
+                        switchskilltoflash = true;
+                    }
+                    else
+                    {
+                        switchskilltobullet = true;
+                        birdswitchskilltorest = false;
+                        switchskilltoflash = false;
+                    }
+                }
+            }
+
+            if (!switchskilltobullet && switchskilltoflash && !birdswitchskilltorest)
+            {
+                flash();
+                if (birdskillpasstime < shieldtime)
+                {
+                    birdskillpasstime += Time.deltaTime;
+                }
+                else
+                {
+                    birdskillpasstime = 0;
+                    switchskilltobullet = false;
+                    birdswitchskilltorest = true;
+                    switchskilltoflash = false;
+                }
+            }
         }
     }
-    void rest() {
+    void rest()
+    {
+        animator.SetBool("attack", false);
         shieldvfx.SetActive(false);
     }
     void fireball() {
@@ -137,7 +209,7 @@ public class sunbosscontrol : MonoBehaviour
 
     Vector3 GetRandomPointInRoom()
     {
-        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
+        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 3.5f, transform.position.y + 3.5f), 0);
         return point;
     }
     void shield() {
@@ -154,18 +226,42 @@ public class sunbosscontrol : MonoBehaviour
     }
     void turntobird() {
         isbird = true;
+        animator.SetTrigger("turn");
     }
 
     void birdbullet() {
-
+        animator.SetBool("attack", true);
+        if (bulletpasstime < birdbulletCD)
+        {
+            bulletpasstime += Time.deltaTime;
+        }
+        else
+        {
+            Instantiate(birdbigbullet, GetRandomPointInRoom() + new Vector3(0, 1, 0), Quaternion.identity);
+            bulletpasstime = 0;
+        }
     }
-    void die() { 
-    
+
+    void flash()
+    {
+        animator.SetBool("attack",true);
+        if (flashpasstime < flashCD)
+        {
+            flashpasstime += Time.deltaTime;
+        }
+        else
+        {
+            Instantiate(birdflash, GetRandomPointInRoom(), Quaternion.identity);
+            flashpasstime = 0;
+        }
+    }
+    void die() {
+        Destroy(transform.parent.gameObject);
     } 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="playerbullet"||(other.tag=="Player"&&other.name=="character")) {
-            if (hitcount <= maxhitcount)
+            if (hitcount < maxhitcount)
             {
                 switch (other.tag)
                 {
@@ -173,7 +269,10 @@ public class sunbosscontrol : MonoBehaviour
                         damageCount += other.GetComponent<BulletMovementNew>().damage;
                         break;
                     case "Player":
-                        damageCount += other.GetComponent<PlayControl>().defence;
+                        if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                        {
+                            damageCount += other.GetComponent<PlayControl>().defence;
+                        }
                         break;
                 }
                 hitcount++;

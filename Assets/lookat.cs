@@ -15,11 +15,16 @@ public class lookat : MonoBehaviour
         if (playerbullet)
         {
             player = GameObject.Find("player");
-            dir = player.GetComponent<PlayerMovementNew>().dir;
+            if (player!=null) {
+                dir = player.GetComponent<PlayerMovementNew>().dir;
+            }
         }
         else {
             enemybat = GameObject.FindGameObjectWithTag("Enemy");
-            dir = enemybat.GetComponent<EnemyMovementNew>().movedir;
+            if (enemybat != null)
+            {
+                dir = enemybat.GetComponent<EnemyMovementNew>().movedir;
+            }
         }
         Destroy(gameObject, 3);
         DiretionChange();
