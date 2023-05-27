@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotmonoster2p : MonoBehaviour
 {
     Animator animator;
-
+    CapsuleCollider collider;
     [Header("»ù´¡²ÎÊý")]
     GameObject monster1;
     public float life;
@@ -41,7 +41,7 @@ public class Rotmonoster2p : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        collider = GetComponent<CapsuleCollider>();
         monster1 = GameObject.Find("RotMonsterP1(Clone)");
         life = monster1.GetComponent<rotmonster1p>().currentlife;
         player = GameObject.Find("player");
@@ -140,7 +140,8 @@ public class Rotmonoster2p : MonoBehaviour
         }
         else
         {
-            Instantiate(bat, GetRandomPointInRoom(), Quaternion.identity);
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 5) { Instantiate(bat, GetRandomPointInRoom(), Quaternion.identity); }
+
             passtime = 0;
         }
 
@@ -162,12 +163,26 @@ public class Rotmonoster2p : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet")
+        if (other.tag == "playerbullet" || (other.tag == "Player" && other.name == "character"))
         {
-            life -= other.GetComponent<BulletMovementNew>().damage;
-            currenthit++;
+            switch (other.tag)
+            {
+                case "playerbullet":
+                    life -= other.GetComponent<BulletMovementNew>().damage;
+                    currenthit++;
+                    break;
+                case "Player":
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        life -= other.GetComponent<PlayControl>().defence;
+                        currenthit++;
+                    }
+                    break;
+            }
+
             if (currenthit == hitcount)
             {
+                collider.enabled = false;
                 die();
                 animator.SetTrigger("die");
             }

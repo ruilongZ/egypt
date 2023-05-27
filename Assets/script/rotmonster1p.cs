@@ -187,16 +187,18 @@ public class rotmonster1p : MonoBehaviour
             switch (other.tag) {
                 case "playerbullet":
                     currentlife -= other.GetComponent<BulletMovementNew>().damage;
+                    currenthit--;
                     break;
                 case "Player":
                     if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
                     {
                         currentlife -= other.GetComponent<PlayControl>().defence;
+                        currenthit--;
                     }
                     break;
             }
 
-            currenthit--;
+
             if (currentlife<=0) {
                 currentlife = 0;
                 animator.SetTrigger("die");

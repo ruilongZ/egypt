@@ -21,6 +21,7 @@ public class sunbosscontrol : MonoBehaviour
     [Header("ui相关")]
     public Slider bloodslider;
     public Text bloodtext;
+    public Text hitcounttext;
     [SerializeField]
     [Header("机制相关")]
     float damageCount;
@@ -71,6 +72,8 @@ public class sunbosscontrol : MonoBehaviour
         switchskilltofire = true;
         switchskilltobullet = true;
         setui();
+        hitcount = maxhitcount;
+        hitcounttext.text = hitcount.ToString();
     }
 
     // Update is called once per frame
@@ -243,7 +246,7 @@ public class sunbosscontrol : MonoBehaviour
         }
         else
         {
-            Instantiate(birdbigbullet, GetRandomPointInRoom() + new Vector3(0, 1, 0), Quaternion.identity);
+            Instantiate(birdbigbullet, GetRandomPointInRoom() + new Vector3(0, 2, 0), Quaternion.identity);
             bulletpasstime = 0;
         }
     }
@@ -263,34 +266,37 @@ public class sunbosscontrol : MonoBehaviour
     }
     void die() {
         animator.SetTrigger("die");
+        transform.parent.GetChild(1).gameObject.SetActive(false);
         Destroy(transform.parent.gameObject,1.5f);
     } 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="playerbullet"||(other.tag=="Player"&&other.name=="character")) {
-            if (hitcount < maxhitcount)
+            if (hitcount > 0)
             {
                 switch (other.tag)
                 {
                     case "playerbullet":
+                        hitcount--;
                         damageCount += other.GetComponent<BulletMovementNew>().damage;
                         break;
                     case "Player":
                         if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
                         {
+                            hitcount--;
                             damageCount += other.GetComponent<PlayControl>().defence;
                         }
                         break;
                 }
-                hitcount++;
-            }
-            else {
-                hitcount = 0;
-                if (damageCount >= standdamagetolife)
-                {
-                    currentlife -= damageCount;
+                if (hitcount==0) {
+                    if (damageCount >= standdamagetolife)
+                    {
+                        currentlife -= damageCount;
+                    }
+                    damageCount = 0;
+                    hitcount = 5;
                 }
-               damageCount = 0;
+                hitcounttext.text = hitcount.ToString();
             }
             setui();
             if (currentlife<=turntobirdlife) {

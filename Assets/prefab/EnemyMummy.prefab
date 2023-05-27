@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4919685906011177306}
   m_Layer: 0
   m_Name: shadow
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3677557795105306104}
   m_Layer: 0
   m_Name: enemycharacter
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

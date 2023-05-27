@@ -57,7 +57,7 @@ public class PlayerMovementNew : MonoBehaviour
         BasicMove();
         Sprint();
         if (!ShiftPressed) { Attack(); }
-
+        
     }
     public void BasicMove() {
         if (Input.GetKey("w")) {

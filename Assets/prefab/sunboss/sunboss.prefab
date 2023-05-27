@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7106636560897363857}
-  - component: {fileID: 7106636560897363856}
+  - component: {fileID: 5921913309409893065}
   m_Layer: 0
   m_Name: sunboss
   m_TagString: boss
@@ -522,7 +522,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &7106636560897363856
+--- !u!143 &5921913309409893065
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,13 +533,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.6
-  m_Radius: 0.13
+  m_Height: 0.98
+  m_Radius: 0.14
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0.02, y: -0.23, z: 0}
+  m_Center: {x: 0.03, y: -0.08, z: 0}
 --- !u!1 &7106636561398173130
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodslider: {fileID: 7106636561820261052}
   bloodtext: {fileID: 7106636561938023227}
+  hitcounttext: {fileID: 7106636560731393773}
   damageCount: 0
   standdamagetolife: 3
   maxhitcount: 5
@@ -900,10 +901,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.1743993
+  m_Radius: 0.1881448
   m_Height: 1.091676
   m_Direction: 1
-  m_Center: {x: 0.016111044, y: -0.04902487, z: 0}
+  m_Center: {x: 0.029856551, y: -0.04902487, z: 0}
 --- !u!54 &7106636562126032616
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -94,10 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3958606272774957175}
   - component: {fileID: 3958606272774957168}
-  - component: {fileID: 3958606272774957169}
   - component: {fileID: 3958606272774957170}
   - component: {fileID: 3958606272774957173}
   - component: {fileID: 3958606272774957174}
+  - component: {fileID: 4245207723004682901}
   m_Layer: 0
   m_Name: RotMonsterP3left
   m_TagString: boss
@@ -173,19 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &3958606272774957169
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3958606272774957171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.23986335
-  m_Center: {x: -0.005614021, y: -0.19417362, z: 0}
 --- !u!54 &3958606272774957170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,6 +206,7 @@ MonoBehaviour:
   RestTime: 3
   spawnDurationTime: 10
   bulletCD: 3
+  sprintspeed: 0
   maxsprintspeed: 8
   speeddamping: 0.9
   sprintTime: 6
@@ -243,3 +231,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &4245207723004682901
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958606272774957171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24110314
+  m_Center: {x: -0.03575009, y: -0.17627016, z: 0}

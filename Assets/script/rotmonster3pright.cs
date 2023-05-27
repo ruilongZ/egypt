@@ -5,7 +5,7 @@ using UnityEngine;
 public class rotmonster3pright : MonoBehaviour
 {
     Animator animator;
-    Collider collider;
+    SphereCollider collider;
 
     [Header("»ù´¡²ÎÊý")]
     GameObject monster2;
@@ -47,7 +47,7 @@ public class rotmonster3pright : MonoBehaviour
         player = GameObject.Find("player");
         bullettospawn = false;
         StartCoroutine("settrue");
-        collider = GetComponent<Collider>();
+        collider = GetComponent<SphereCollider>();
     }
     IEnumerator settrue() {
         yield return new WaitForSeconds(2);
@@ -132,7 +132,10 @@ public class rotmonster3pright : MonoBehaviour
         }
         else
         {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 5)
+            {
+                Instantiate(bullet, transform.position, Quaternion.identity);
+            }
             passtime = 0;
         }
     }
@@ -149,7 +152,7 @@ public class rotmonster3pright : MonoBehaviour
             else
             {
                 if (!isdead) {
-                    transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
+                   transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
                     sprintspeed = Mathf.Lerp(sprintspeed, 0, Time.deltaTime * speeddamping);
                 }
             }
@@ -164,9 +167,20 @@ public class rotmonster3pright : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet")
+        if (other.tag == "playerbullet" || (other.tag == "Player" && other.name == "character"))
         {
-            life -= other.GetComponent<BulletMovementNew>().damage;
+            switch (other.tag)
+            {
+                case "playerbullet":
+                    life -= other.GetComponent<BulletMovementNew>().damage;
+                    break;
+                case "Player":
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        life -= other.GetComponent<PlayControl>().defence;
+                    }
+                    break;
+            }
             if (life <= 0)
             {
                 die();

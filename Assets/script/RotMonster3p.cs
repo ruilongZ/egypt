@@ -5,26 +5,28 @@ using UnityEngine;
 
 public class RotMonster3p : MonoBehaviour
 {
-    Collider collider;
     Animator animator;
-
-    [Header("»ù´¡²ÎÊı")]
+    SphereCollider collider;
+    [Header("åŸºç¡€")]
     GameObject monster2;
     float life;
     GameObject player;
 
     [Space]
-    [Header("»úÖÆ²ÎÊı")]
+    [Header("æŠ€èƒ½æ§åˆ¶")]
     public GameObject bullet;
     public float bulletTime;
     public float RestTime;
     public float spawnDurationTime;
-
+    [SerializeField]
     [Space]
-    [Header("·¢Éä×Óµ¯¼¼ÄÜ")]
+    [Header("ç”Ÿæˆæ€ªç‰©æŠ€èƒ½")]
     public float bulletCD;
+
+
+    [SerializeField]
     [Space]
-    [Header("³å×²¼¼ÄÜ")]
+    [Header("å†²åˆºæŠ€èƒ½")]
     float sprintspeed;
     public float maxsprintspeed;
     public float speeddamping;
@@ -48,7 +50,7 @@ public class RotMonster3p : MonoBehaviour
         player = GameObject.Find("player");
         bullettospawn = false;
         StartCoroutine("settrue");
-        collider = GetComponent<Collider>();
+        collider = GetComponent<SphereCollider>();
     }
     IEnumerator settrue()
     {
@@ -133,7 +135,10 @@ public class RotMonster3p : MonoBehaviour
         }
         else
         {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 5)
+            {
+                Instantiate(bullet, transform.position, Quaternion.identity);
+            }
             passtime = 0;
         }
     }
@@ -150,7 +155,7 @@ public class RotMonster3p : MonoBehaviour
             else
             {
                 if (!isdead) {
-                    transform.Translate((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
+                    transform.Translate ((player.transform.position - transform.position).normalized * sprintspeed * Time.deltaTime);
                     sprintspeed = Mathf.Lerp(sprintspeed, 0, Time.deltaTime * speeddamping);
                 }
             }
@@ -164,9 +169,20 @@ public class RotMonster3p : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet")
+        if (other.tag == "playerbullet" || (other.tag == "Player" && other.name == "character"))
         {
-            life -= other.GetComponent<BulletMovementNew>().damage;
+            switch (other.tag)
+            {
+                case "playerbullet":
+                    life -= other.GetComponent<BulletMovementNew>().damage;
+                    break;
+                case "Player":
+                    if (other.GetComponent<PlayControl>().sprintdamageequip && other.GetComponent<PlayControl>().ShiftPressed)
+                    {
+                        life -= other.GetComponent<PlayControl>().defence;
+                    }
+                    break;
+            }
             if (life <= 0)
             {
                 die();
