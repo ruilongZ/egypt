@@ -21,16 +21,11 @@ public class bouncebulletfromplayer : MonoBehaviour
     Vector3 hitpoint;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet"|| other.tag == "enemybullet") {
+        if (other.tag == "playerbullet") {
             hitpoint = other.bounds.ClosestPoint(transform.position);
             switch (other.tag) {
                 case "playerbullet":
                     Instantiate(bouncebullet, hitpoint, Quaternion.identity);
-                    break;
-                case "enemybullet":
-                    Instantiate(enemybouncebullet, hitpoint, Quaternion.identity);
-                    GetComponentInParent<sunbosscontrol>().currentlife += addlife;
-                    GetComponentInParent<sunbosscontrol>().setui();
                     break;
             }
 

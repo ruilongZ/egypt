@@ -18,11 +18,15 @@ public class DoppelgangerComponent : MonoBehaviour
     public GameObject Bullet;
     void Start()
     {
+        animator = GetComponent<Animator>();
         currentLife = maxLife;
         collider = this.GetComponent<Collider>();
-        Instantiate(Bullet, this.transform.position,this.transform.rotation);
+        StartCoroutine("bullet");
     }
-
+    IEnumerator bullet() {
+        yield return new WaitForSeconds(2f);
+        Instantiate(Bullet, this.transform.position, this.transform.rotation);
+    }
     //Boss Get Damage
     void OnTriggerEnter(Collider other)
     {
@@ -43,7 +47,7 @@ public class DoppelgangerComponent : MonoBehaviour
             if (currentLife <= 0)
             {
                 currentLife = 0;
-                animator.Play("Dark_Out");
+                animator.SetTrigger("die");
                 die = true;
                 //if (currentMagicCircle)
                 //{

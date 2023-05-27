@@ -51,6 +51,8 @@ public class DarkBossState1 : MonoBehaviour
     float doppeTimer = 0f;
     public List<DoppelgangerComponent> doppes = new List<DoppelgangerComponent>();
 
+    public GameObject shield;
+
     public enum Skill
     {
         MagicCircleSkill,
@@ -80,6 +82,7 @@ public class DarkBossState1 : MonoBehaviour
                     lastSkill = Skill.MagicCircleSkill;
                     return;
                 case Skill.DoppeLgangerSkill:
+                    shield.SetActive(false);
                     lastSkill = Skill.DoppeLgangerSkill;
                     doppeCount = 0;
                     return;
@@ -106,6 +109,7 @@ public class DarkBossState1 : MonoBehaviour
 
     private IEnumerator SpawnMagicCircle()
     {
+        shield.SetActive(true);
         playerPos = player.transform.position;
         warning = Instantiate(Warning, playerPos, player.transform.rotation);
         warning.GetComponent<destoryself>().destorytime = TimeBefore - 0.5f;
@@ -122,7 +126,7 @@ public class DarkBossState1 : MonoBehaviour
         {
             if (doppeTimer >= DoppeIntervalTime)
             {
-                var doppe = Instantiate(Doppelgang, GetRandomPointInRoom(), player.transform.rotation).GetComponent<DoppelgangerComponent>();
+                var doppe = Instantiate(Doppelgang, GetRandomPointInRoom()+new Vector3(0,0.8f,0), player.transform.rotation).GetComponent<DoppelgangerComponent>();
                 doppes.Add(doppe);
                 doppeCount++;
                 doppeTimer = 0f;
@@ -140,6 +144,7 @@ public class DarkBossState1 : MonoBehaviour
                 Destroy(dope.gameObject);
             }
             doppes.Clear();
+            shield.SetActive(false);
             IsCD = true;
             currentSkill = Skill.MagicCircleSkill;
         }
@@ -152,7 +157,7 @@ public class DarkBossState1 : MonoBehaviour
     }
     Vector3 GetRandomPointInRoom()
     {
-        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 4, transform.position.y + 4), 0);
+        Vector3 point = new Vector3(Random.Range(transform.position.x - 8, transform.position.x + 8), Random.Range(transform.position.y - 3, transform.position.y + 3), 0);
         return point;
     }
 

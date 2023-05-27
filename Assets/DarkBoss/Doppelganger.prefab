@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6021388499478646865}
   m_Layer: 0
   m_Name: Doppelganger
-  m_TagString: Untagged
+  m_TagString: boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 1748074009285932313}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.74, y: 2.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 80
   m_Sprite: {fileID: 21300000, guid: 150b9917c95e36b47abbea750057c17d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.67749906, g: 0.4198113, b: 1, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,10 +119,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.48
-  m_Height: 1.84
+  m_Radius: 0.16259854
+  m_Height: 0.9133332
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.018241405, y: -0.025538297, z: 0}
 --- !u!114 &1748074009285932310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65d2630d0c6ced4ba7f06aa33de4a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLife: 100
-  maxLife: 100
+  currentLife: 0
+  maxLife: 3
   die: 0
   Bullet: {fileID: 5465797620549687957, guid: aa0922a8c2334c149be93a0f3a6201e1, type: 3}
 --- !u!54 &6021388499478646865
