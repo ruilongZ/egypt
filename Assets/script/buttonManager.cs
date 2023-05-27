@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class buttonManager : MonoBehaviour
 {
@@ -19,5 +20,12 @@ public class buttonManager : MonoBehaviour
     public void selectionButton() {
         godUI.SetBool("talk",false);
     }
-
+    public void Resetbutton()
+    {
+        SceneManager.LoadScene("start");
+    }
+    public void Menubutton()
+    {
+        SceneManager.LoadScene("menu");
+    }
 }

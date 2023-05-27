@@ -5,13 +5,12 @@ using UnityEngine;
 public class flashmove : MonoBehaviour
 {
     GameObject player;
-    public float speed;
     Collider collider;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("player");
-        Destroy(gameObject, 1.2f);
+        Destroy(gameObject, 1f);
         collider = GetComponent<Collider>();
         StartCoroutine("setable");
     }

@@ -9,8 +9,8 @@ public class OverlapRenderControl : MonoBehaviour
     private int originOrder;
     bool addLayer = false;
     int otherOrder;
-    private float timer;
-    private float maxTime=2;
+
+
     private void Awake()
     {
         myRenderer = gameObject.GetComponentInParent<Renderer>();

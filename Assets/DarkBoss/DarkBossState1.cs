@@ -15,14 +15,7 @@ public class DarkBossState1 : MonoBehaviour
     float beforeTimer;
     [Header("法阵存在时间")]
     public float TimeAfter;
-    float afterTimer;
-    [Header("伤害")]
-    public float CircleDamage;
-    public float BulletDamage;
-    [Header("伤害转化比例")]
-    public float HealRate;
-    [Header("减速比例")]
-    public float SlowDownRate;
+    
 
     Vector3 playerPos = Vector3.zero;
 
@@ -99,7 +92,7 @@ public class DarkBossState1 : MonoBehaviour
         {
             if (currentLife <= 0)
             {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject,4f);
             }
         }
 
@@ -180,8 +173,12 @@ public class DarkBossState1 : MonoBehaviour
             }
             if (currentLife <= 0)
             {
+                foreach (var dope in doppes)
+                {
+                    Destroy(dope.gameObject,4f);
+                }
                 currentLife = 0;
-                animator.Play("Dark_Out");
+                animator.SetTrigger("die");
                 die = true;
                 if (currentMagicCircle)
                 {
