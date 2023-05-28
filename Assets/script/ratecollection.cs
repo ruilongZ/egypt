@@ -10,7 +10,7 @@ public class ratecollection : MonoBehaviour
     {
         if (other.tag == "Player" && other.name == "player")
         {
-            other.GetComponent<PlayerMovementNew>().FiringRate -= rateadd;
+            other.GetComponent<PlayerMovementNew>().FiringRate *= rateadd;
         }
     }
 }

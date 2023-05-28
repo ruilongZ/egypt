@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class flashmove : MonoBehaviour
 {
-    GameObject player;
     Collider collider;
+    public GameObject waining;
+    GameObject wainingsign;
+    public float vfxlife;
+    public float waittime;
+    public float damageactive;
+    public float standardsize=1;
+    public Vector3 offset=new Vector3(0,0.5f,0);
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("player");
-        Destroy(gameObject, 1f);
+        wainingsign = Instantiate(waining,( transform.position+offset), Quaternion.identity);
+        transform.localScale = Vector3.one * Random.Range(standardsize-0.4f, standardsize+0.2f);
+        Destroy(wainingsign, waittime);
         collider = GetComponent<Collider>();
         StartCoroutine("setable");
+        Destroy(gameObject, vfxlife+waittime);
     }
     IEnumerator setable() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waittime);
         collider.enabled = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        //transform.Translate((player.transform.position - transform.position).normalized * speed * Time.deltaTime);
     }
 }

@@ -6,14 +6,12 @@ public class DarkBullet : MonoBehaviour
 {
     GameObject player;
     Vector3 dir;
-    Animator animator;
-    public float MaxSpeed;
-    public float FloatTime;
     public GameObject EnemySpawned;
     
-    float speed;
+    public float speed;
     bool die = false;
-    float t=0;
+    public float multi = 0.8f;
+    bool blocked;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -21,26 +19,21 @@ public class DarkBullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (die)
-        {
+       speed = Mathf.Lerp(speed, 0, Time.deltaTime*multi);
+        if (blocked|| speed < 0.1f) {
             speed = 0;
-            Instantiate(EnemySpawned, this.transform.position, this.transform.rotation);
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            speed = Mathf.Lerp(MaxSpeed, 0.1f, t);
-        }
-        if (t<=1f&&speed>0.1f)
-        {
-            t += Time.fixedDeltaTime/FloatTime;
-        }
-        else if(speed<=0.1f)
-        {
-            die=true;
+            Instantiate(EnemySpawned, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            return;
         }
         transform.Translate(dir * Time.deltaTime * speed);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "block") {
+            blocked = true;
+        }
     }
 }

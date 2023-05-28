@@ -133,4 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a21c9535a2afa4baed4198e84259b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  waining: {fileID: 4732233109020216295, guid: 50a296714d028af498ec80dae7cae763, type: 3}
+  vfxlife: 1.2
+  waittime: 0.5
+  damageactive: 0.7
+  standardsize: 0.9
+  offset: {x: 0, y: -1.14, z: 0}

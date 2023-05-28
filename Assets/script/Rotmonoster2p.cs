@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rotmonoster2p : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Rotmonoster2p : MonoBehaviour
     [Header("基础参数")]
     GameObject monster1;
     public float life;
+    float maxlife;
     GameObject player;
     public GameObject rotmonsterp3;
 
@@ -29,6 +31,11 @@ public class Rotmonoster2p : MonoBehaviour
     [Header("生成怪物技能")]
     public float spwanCD;
 
+    [Space]
+    [Header("ui参数")]
+    public Text blood;
+    public Slider bloodslider;
+
     float passtime;
     int currenthit;
     float skillpasstime;
@@ -44,12 +51,17 @@ public class Rotmonoster2p : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
         monster1 = GameObject.Find("RotMonsterP1(Clone)");
         life = monster1.GetComponent<rotmonster1p>().currentlife;
+        maxlife = monster1.GetComponent<rotmonster1p>().maxlife;
         player = GameObject.Find("player");
         switchskilltobullet = true;
         bullettospawn = false;
         center = GameObject.Find("boss1(Clone)");
+        setui();
     }
-
+    void setui() {
+        blood.text = life.ToString();
+        bloodslider.value = life / maxlife;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -140,7 +152,7 @@ public class Rotmonoster2p : MonoBehaviour
         }
         else
         {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 5) { Instantiate(bat, GetRandomPointInRoom(), Quaternion.identity); }
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length < 4) { Instantiate(bat, GetRandomPointInRoom(), Quaternion.identity); }
 
             passtime = 0;
         }
@@ -179,9 +191,10 @@ public class Rotmonoster2p : MonoBehaviour
                     }
                     break;
             }
-
+            setui();
             if (currenthit == hitcount)
             {
+                transform.GetChild(1).gameObject.SetActive(false);
                 collider.enabled = false;
                 die();
                 animator.SetTrigger("die");

@@ -28,6 +28,7 @@ public class PlayControl : MonoBehaviour
     public Slider defencebar;
     public Text defenceNum;
     public Text coinNum;
+    public GameObject gameoverui;
 
     Animator playerAnimator;
     bool die;
@@ -105,6 +106,7 @@ public class PlayControl : MonoBehaviour
                 }
                 if (currentlife <= 0)
                 {
+                    gameoverui.SetActive(true);
                     die = true;
                     playerAnimator.SetTrigger("die");
                     gameObject.GetComponent<CapsuleCollider>().enabled = false;

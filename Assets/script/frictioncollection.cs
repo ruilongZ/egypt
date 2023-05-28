@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class frictioncollection : MonoBehaviour
 {
-    public float frictionadd;
+    public float frictionmulti;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player"&&other.name=="player") {
-            other.GetComponent<PlayerMovementNew>().Friction += frictionadd;
+            other.GetComponent<PlayerMovementNew>().Friction *= frictionmulti;
         }
     }
 }

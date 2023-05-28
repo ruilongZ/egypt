@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DarkBossState1 : MonoBehaviour
 {
-    [Header("机制相关")]
     [Header("机制相关")]
     public float CDTime;
     float cdTimer;
@@ -15,22 +15,19 @@ public class DarkBossState1 : MonoBehaviour
     float beforeTimer;
     [Header("法阵存在时间")]
     public float TimeAfter;
-    
-
     Vector3 playerPos = Vector3.zero;
-
-
-
     [Space]
     [Header("基础参数")]
     public float currentLife;
     public float maxlife;
-
-
     Animator animator;
     GameObject player;
     Collider collider;
     bool die = false;
+    [Space]
+    [Header("ui相关")]
+    public Text bloodcounttext;
+    public Slider bloodslider;
 
     [Header("素材")]
     public GameObject MagicCircle;
@@ -45,7 +42,7 @@ public class DarkBossState1 : MonoBehaviour
     public List<DoppelgangerComponent> doppes = new List<DoppelgangerComponent>();
 
     public GameObject shield;
-
+    public GameObject bossbull;
     public enum Skill
     {
         MagicCircleSkill,
@@ -56,10 +53,12 @@ public class DarkBossState1 : MonoBehaviour
 
     void Start()
     {
+        currentLife = maxlife;
         collider = GetComponent<Collider>();
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
         doppeCount = DoppeCount;
+        setui();
     }
 
     void FixedUpdate()
@@ -75,7 +74,7 @@ public class DarkBossState1 : MonoBehaviour
                     lastSkill = Skill.MagicCircleSkill;
                     return;
                 case Skill.DoppeLgangerSkill:
-                    shield.SetActive(false);
+                    shield.SetActive(true);
                     lastSkill = Skill.DoppeLgangerSkill;
                     doppeCount = 0;
                     return;
@@ -92,7 +91,9 @@ public class DarkBossState1 : MonoBehaviour
         {
             if (currentLife <= 0)
             {
-                Destroy(this.gameObject,4f);
+                Destroy(gameObject,4f);
+                transform.GetChild(1).gameObject.SetActive(false);
+                // Destroy(transform.parent.gameObject, 4.1f);
             }
         }
 
@@ -102,7 +103,7 @@ public class DarkBossState1 : MonoBehaviour
 
     private IEnumerator SpawnMagicCircle()
     {
-        shield.SetActive(true);
+        shield.SetActive(false);
         playerPos = player.transform.position;
         warning = Instantiate(Warning, playerPos, player.transform.rotation);
         warning.GetComponent<destoryself>().destorytime = TimeBefore - 0.5f;
@@ -134,7 +135,7 @@ public class DarkBossState1 : MonoBehaviour
         {
             foreach (var dope in doppes)
             {
-                Destroy(dope.gameObject);
+                Destroy(dope.gameObject,2.5f);
             }
             doppes.Clear();
             shield.SetActive(false);
@@ -171,8 +172,10 @@ public class DarkBossState1 : MonoBehaviour
                     }
                     break;
             }
+            setui();
             if (currentLife <= 0)
             {
+
                 foreach (var dope in doppes)
                 {
                     Destroy(dope.gameObject,4f);
@@ -185,7 +188,18 @@ public class DarkBossState1 : MonoBehaviour
                     Destroy(currentMagicCircle);
                 }
                 collider.enabled = false;
+                StartCoroutine(instance());
             }
         }
+    }
+    IEnumerator instance() {
+        yield return new WaitForSeconds(4f);
+        Instantiate(bossbull, transform.position, Quaternion.identity);
+    }
+
+    void setui()
+    {
+        bloodslider.value = currentLife / maxlife;
+        bloodcounttext.text = currentLife.ToString();
     }
 }

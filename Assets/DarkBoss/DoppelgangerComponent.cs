@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoppelgangerComponent : MonoBehaviour
 {
+    float passtime=4;
     [Header("»ù´¡²ÎÊý")]
     public float currentLife;
     public float maxLife;
@@ -26,6 +27,26 @@ public class DoppelgangerComponent : MonoBehaviour
     IEnumerator bullet() {
         yield return new WaitForSeconds(2f);
         Instantiate(Bullet, this.transform.position, this.transform.rotation);
+    }
+    IEnumerator spawnbullet()
+    {
+        yield return new WaitForSeconds(8f);
+        if (passtime > 0)
+        {
+            passtime -= Time.deltaTime;
+        }
+        else
+        {
+            passtime = 4;
+            if ((GameObject.FindGameObjectsWithTag("Enemy").Length+ GameObject.FindGameObjectsWithTag("bossbullet").Length )< 4)
+            {
+                Instantiate(Bullet, this.transform.position, this.transform.rotation);
+            }
+        }
+    }
+    private void Update()
+    {
+        StartCoroutine(spawnbullet());
     }
     //Boss Get Damage
     void OnTriggerEnter(Collider other)
