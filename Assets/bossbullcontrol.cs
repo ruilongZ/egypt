@@ -27,6 +27,7 @@ public class bossbullcontrol : MonoBehaviour
     public float multi;
     bool skilling;
     bool resting;
+    bool isdead;
 
     [Space]
     [Header("uiœ‡πÿ")]
@@ -52,13 +53,17 @@ public class bossbullcontrol : MonoBehaviour
         if (skilling&&!resting) {
             switchtorest();
             animator.SetTrigger("skill");
-            sprintandstone();
+            if (!isdead)
+            {
+                sprintandstone();
+            }
         }
         if (!skilling && resting)
         {
             switchtoskill();
             animator.SetTrigger("skillend");
         }
+
     }
     void switchtorest() {
         if (passtime < skilltime)
@@ -151,6 +156,7 @@ public class bossbullcontrol : MonoBehaviour
             if (currentlife <= 0)
             {
                 die();
+                isdead = true;
             }
         }
     }
