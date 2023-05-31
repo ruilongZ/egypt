@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DarkBossState1 : MonoBehaviour
 {
+    public Animator dialogue;
+    bool dialogueed;
     [Header("机制相关")]
     public float CDTime;
     float cdTimer;
@@ -63,42 +65,46 @@ public class DarkBossState1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(cdTimer>=CDTime&&!die)
+        if (dialogueed)
         {
-            IsCD = false;
-            cdTimer = 0f;
-            switch (currentSkill)
+            if (cdTimer >= CDTime && !die)
             {
-                case Skill.MagicCircleSkill:
-                    StartCoroutine(SpawnMagicCircle());
-                    lastSkill = Skill.MagicCircleSkill;
-                    return;
-                case Skill.DoppeLgangerSkill:
-                    shield.SetActive(true);
-                    lastSkill = Skill.DoppeLgangerSkill;
-                    doppeCount = 0;
-                    return;
-            }
-        }
+                IsCD = false;
+                cdTimer = 0f;
+                switch (currentSkill)
+                {
+                    case Skill.MagicCircleSkill:
 
-        //CD Time Counter
-        if(IsCD)
-        {
-            cdTimer += Time.fixedDeltaTime;
-        }
-        //When The Dead Animation is Finished, Destroy The Boss
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
-        {
-            if (currentLife <= 0)
+                        StartCoroutine(SpawnMagicCircle());
+                        lastSkill = Skill.MagicCircleSkill;
+                        return;
+                    case Skill.DoppeLgangerSkill:
+                        shield.SetActive(true);
+                        lastSkill = Skill.DoppeLgangerSkill;
+                        doppeCount = 0;
+                        return;
+                }
+            }
+
+            //CD Time Counter
+            if (IsCD)
             {
-                Destroy(gameObject,4f);
-                transform.GetChild(1).gameObject.SetActive(false);
-                // Destroy(transform.parent.gameObject, 4.1f);
+                cdTimer += Time.fixedDeltaTime;
             }
-        }
+            //When The Dead Animation is Finished, Destroy The Boss
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
+            {
+                if (currentLife <= 0)
+                {
+                    Destroy(gameObject, 4f);
+                    transform.GetChild(1).gameObject.SetActive(false);
+                    // Destroy(transform.parent.gameObject, 4.1f);
+                }
+            }
 
-        //Skill 2
-        SpawnDoope();
+            //Skill 2
+            SpawnDoope();
+        }
     }
 
     private IEnumerator SpawnMagicCircle()
@@ -201,5 +207,11 @@ public class DarkBossState1 : MonoBehaviour
     {
         bloodslider.value = currentLife / maxlife;
         bloodcounttext.text = currentLife.ToString();
+    }
+
+    public void setbossdialogue()
+    {
+        dialogue.SetBool("enterroom", true);
+        dialogueed = true;
     }
 }

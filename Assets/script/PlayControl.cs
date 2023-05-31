@@ -27,7 +27,6 @@ public class PlayControl : MonoBehaviour
     public Slider bloodbar;
     public Slider defencebar;
     public Text defenceNum;
-    public Text coinNum;
     public GameObject gameoverui;
 
     Animator playerAnimator;
@@ -42,7 +41,6 @@ public class PlayControl : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         setbloodbar();
         setdefencebar();
-        setcionNub();
         setdefenceNum();
     }
     private void Update()
@@ -73,7 +71,6 @@ public class PlayControl : MonoBehaviour
     {
         if (other.tag == "collection") {
             coin++;
-            setcionNub();
         }
         if (sprintdamageequip && ShiftPressed)
         {
@@ -159,10 +156,7 @@ public class PlayControl : MonoBehaviour
     {
         defencebar.value = defence / 30;
     }
-    public void setcionNub()
-    {
-        coinNum.text = coin.ToString();
-    }
+
     public void setdefenceNum()
     {
         defenceNum.text=defence.ToString();

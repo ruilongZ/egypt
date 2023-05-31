@@ -3200,7 +3200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659317586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 41.5, z: 0}
+  m_LocalPosition: {x: 51.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6975,7 +6975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentlife: 0
   maxlife: 100
-  defence: 10000
+  defence: 0
   ShiftPressed: 0
   issprintanddamage: 0
   sprintdamageequip: 0
@@ -6985,7 +6985,6 @@ MonoBehaviour:
   bloodbar: {fileID: 981088103}
   defencebar: {fileID: 1200682242}
   defenceNum: {fileID: 1515969576}
-  coinNum: {fileID: 0}
   gameoverui: {fileID: 19691576}
   coin: 50
 --- !u!1 &1515969574

@@ -28,4 +28,5 @@ public class buttonManager : MonoBehaviour
     {
         SceneManager.LoadScene("menu");
     }
+
 }

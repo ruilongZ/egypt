@@ -46,7 +46,9 @@ public class DoppelgangerComponent : MonoBehaviour
     }
     private void Update()
     {
-        StartCoroutine(spawnbullet());
+        if (!die) {
+            StartCoroutine(spawnbullet());
+        }
     }
     //Boss Get Damage
     void OnTriggerEnter(Collider other)

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class sunbosscontrol : MonoBehaviour
 {
+    public Animator dialogue;
+
     float skillpasstime;
     bool switchskilltofire;
     bool switchskilltoshield;
@@ -69,8 +71,7 @@ public class sunbosscontrol : MonoBehaviour
     {
         currentlife = maxlife;
         animator = GetComponent<Animator>();
-        switchskilltofire = true;
-        switchskilltobullet = true;
+        shieldvfx.SetActive(true);
         setui();
         hitcount = maxhitcount;
         hitcounttext.text = hitcount.ToString();
@@ -207,6 +208,7 @@ public class sunbosscontrol : MonoBehaviour
     void fireball() {
         if (firepasstime < bulletCD)
         {
+            shieldvfx.SetActive(false);
             firepasstime += Time.deltaTime;
         }
         else
@@ -314,5 +316,11 @@ public class sunbosscontrol : MonoBehaviour
         bloodslider.value = currentlife / maxlife;
         bloodtext.text = currentlife.ToString();
         
+    }
+
+   public void setbossdialogue() {
+        dialogue.SetBool("enterroom", true);
+        switchskilltofire = true;
+        switchskilltobullet = true;
     }
 }
