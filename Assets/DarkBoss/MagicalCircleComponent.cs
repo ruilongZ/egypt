@@ -62,7 +62,7 @@ public class MagicalCircleComponent : MonoBehaviour
                 //Boss Get Health
                 if (darkGod.currentLife+HealRate * DamagePerSec<darkGod.maxlife)
                 {
-                    darkGod.currentLife += HealRate * DamagePerSec;
+                    darkGod.currentLife +=5;
                 }
                 else
                 {
@@ -75,7 +75,13 @@ public class MagicalCircleComponent : MonoBehaviour
             player.GetComponent<PlayerMovementNew>().MaxSpeedMultiplier = playerSpeed;
         }
     }
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player" && darkGod.currentLife + HealRate * DamagePerSec < darkGod.maxlife)
+        {
+            darkGod.currentLife += 5;
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" )

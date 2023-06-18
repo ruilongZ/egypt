@@ -15,7 +15,6 @@ public class changeconversation : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-        playersave =GameObject.Find("playersave");
     }
 
     // Update is called once per frame

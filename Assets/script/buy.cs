@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class buy : MonoBehaviour
 {
+    AudioSource audio;
+    public AudioClip fail;
+    public AudioClip succeed;
+
     Text showtext;
     public int price;
     public GameObject reward;
@@ -13,6 +17,7 @@ public class buy : MonoBehaviour
     void Start()
     {
         showtext = GameObject.Find("mianui").transform.GetChild(2).GetComponent<Text>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,9 +36,11 @@ public class buy : MonoBehaviour
                     Instantiate(reward, GameObject.Find("shop1(Clone)").transform.GetChild(1).position, Quaternion.identity);
                 }
                 Destroy(gameObject, 0.2f);
+                audio.PlayOneShot(succeed);
                 showtext.text = "--";
             }
             else {
+                audio.PlayOneShot(fail);
                 showtext.text = "½ð±Ò²»¹»";
             }
         }

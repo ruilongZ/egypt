@@ -120,22 +120,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8b3e2258eae3f479edf89aa57fa650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 0}
   CDTime: 3
   IsCD: 1
   TimeBefore: 3
   TimeAfter: 4
-  CircleDamage: 0
-  BulletDamage: 0
-  HealRate: 0
-  SlowDownRate: 0
   currentLife: 100
   maxlife: 100
+  bloodcounttext: {fileID: 0}
+  bloodslider: {fileID: 0}
   MagicCircle: {fileID: 1061306616579882395, guid: 8de1e1a1c3f8a9744a19016384bec5f6, type: 3}
-  Warning: {fileID: 4732233109020216295, guid: 50a296714d028af498ec80dae7cae763, type: 3}
+  Warning: {fileID: 7454102479615000253, guid: cd69a621c2001ae4987ecc4c185f6faf, type: 3}
   Doppelgang: {fileID: 1748074009285932313, guid: 81bd3451b980c6a4d99727e78db93e8f, type: 3}
   DoppeCount: 4
   DoppeIntervalTime: 2
   doppes: []
+  shield: {fileID: 0}
+  bossbull: {fileID: 0}
   currentSkill: 1
 --- !u!136 &8390152200576497288
 CapsuleCollider:

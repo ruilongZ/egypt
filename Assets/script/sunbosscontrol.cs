@@ -269,8 +269,13 @@ public class sunbosscontrol : MonoBehaviour
     void die() {
         animator.SetTrigger("die");
         transform.parent.GetChild(1).gameObject.SetActive(false);
+        StartCoroutine(setaftertalk());
         Destroy(transform.parent.gameObject,1.5f);
-    } 
+    }
+    IEnumerator setaftertalk() {
+        yield return new WaitForSeconds(1.4f);
+        GameObject.Find("aftersundialogue").GetComponent<Canvas>().enabled = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="playerbullet"||(other.tag=="Player"&&other.name=="character")) {

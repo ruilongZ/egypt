@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43972a727734c59468336663316550fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warning: {fileID: 4732233109020216295, guid: 50a296714d028af498ec80dae7cae763, type: 3}
+  warning: {fileID: 7454102479615000253, guid: cd69a621c2001ae4987ecc4c185f6faf, type: 3}
   attackcollider: {fileID: 6769957764366142194, guid: 604a3e5655b5f5b42914c273124cfa28, type: 3}
   warningtime: 1
 --- !u!65 &4102321480660674512

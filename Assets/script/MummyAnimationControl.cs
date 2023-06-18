@@ -22,13 +22,14 @@ public class MummyAnimationControl : MonoBehaviour
 
     [Header("д╬дкра╩Ы╢║")]
     public float life;
-
+    Collider collider;
 
     Animator mummyAnimator;
     // Start is called before the first frame update
     void Start()
     {
         mummyAnimator = GetComponent<Animator>();
+        collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -69,6 +70,7 @@ public class MummyAnimationControl : MonoBehaviour
             GetComponentInParent<EnemyMovementNew>().die = true;
             Destroy(GetComponentInParent<EnemyMovementNew>().gameObject, 0.7f);
             RandomingRate();
+            collider.enabled = false;
         }
     }
 
@@ -80,17 +82,17 @@ public class MummyAnimationControl : MonoBehaviour
             sum += RewardingAndRate[i].rate;
         }
         int k = Random.Range(0, sum);
-        int j = RewardingAndRate[0].rate;
+        int j = 0;
         for (int i = 0; i < RewardingAndRate.Length; i++)
         {
-            if (k <= j)
+            if (k <= j + RewardingAndRate[i].rate)
             {
                 Instantiate(RewardingAndRate[i].reward, transform.position, Quaternion.identity);
                 break;
             }
             else
             {
-                j += RewardingAndRate[i + 1].rate;
+                    j += RewardingAndRate[i].rate;
             }
         }
     }

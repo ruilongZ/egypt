@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayControl : MonoBehaviour
 {
+    AudioSource audio;
+    public AudioClip attacked;
     [Header("Íæ¼Ò»ù´¡")]
     public float currentlife;
     public float maxlife;
@@ -42,6 +44,7 @@ public class PlayControl : MonoBehaviour
         setbloodbar();
         setdefencebar();
         setdefenceNum();
+        audio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -101,6 +104,7 @@ public class PlayControl : MonoBehaviour
                         TakeDamage(10);
                         break;
                 }
+                audio.PlayOneShot(attacked);
                 if (currentlife <= 0)
                 {
                     gameoverui.SetActive(true);
@@ -147,6 +151,10 @@ public class PlayControl : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("enemybullet"));
         Destroy(GameObject.FindGameObjectWithTag("god"));
         Destroy(GameObject.FindGameObjectWithTag("boss"));
+        Destroy(GameObject.FindGameObjectWithTag("damageallbullet"));
+        Destroy(GameObject.FindGameObjectWithTag("bossbullet"));
+        Destroy(GameObject.FindGameObjectWithTag("collection"));
+        Destroy(GameObject.FindGameObjectWithTag("follow"));
     }
     public void setbloodbar()
     {

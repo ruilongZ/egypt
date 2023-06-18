@@ -19,6 +19,7 @@ TagManager:
   - sprintbullet
   - track
   - damageallbullet
+  - room
   layers:
   - Default
   - TransparentFX

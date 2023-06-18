@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovementNew : MonoBehaviour
 {
+    AudioSource audio;
+    public AudioClip attack;
+    public AudioClip sprint;
     [Header("»ù´¡ÒÆ¶¯")]
     public float TimeToReachMaxSpeed;
     public float MaxSpeedMultiplier;
@@ -49,6 +52,7 @@ public class PlayerMovementNew : MonoBehaviour
         control = GetComponent<CharacterController>();
         CanFire = true;
         animator = GetComponentInChildren<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -131,7 +135,8 @@ public class PlayerMovementNew : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             ShiftPressed = true;
             if (passtime < SprintTime && dir != Vector3.zero) {
-                    animator.SetTrigger("sprint");
+                audio.PlayOneShot(sprint);
+                animator.SetTrigger("sprint");
             }
         }
         if (ShiftPressed) {
@@ -148,6 +153,7 @@ public class PlayerMovementNew : MonoBehaviour
     }
     public void Attack() {
         if (Input.GetKeyDown(KeyCode.UpArrow)&&CanFire) {
+            audio.PlayOneShot(attack);
             Instantiate(upbullet , FirePosition.position, Quaternion.Euler(0,0,90-dir.x* BulletOffset));
             FireInputDir = new Vector3(0,1,0);
             CanFire = false;
@@ -157,6 +163,7 @@ public class PlayerMovementNew : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) && CanFire)
         {
+            audio.PlayOneShot(attack);
             Instantiate(downbullet, FirePosition.position, Quaternion.Euler(0, 0, -90+dir.x* BulletOffset));
             FireInputDir = new Vector3(0, -1, 0);
             CanFire = false;
@@ -166,6 +173,7 @@ public class PlayerMovementNew : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) && CanFire)
         {
+            audio.PlayOneShot(attack);
             Instantiate(rightbullet, FirePosition.position, Quaternion.Euler(0, 0, 0+dir.y* BulletOffset));
             FireInputDir = new Vector3(1, 0, 0);
             CanFire = false;
@@ -175,6 +183,7 @@ public class PlayerMovementNew : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && CanFire)
         {
+            audio.PlayOneShot(attack);
             Instantiate(leftbullet, FirePosition.position, Quaternion.Euler(0, 0, 180-dir.y* BulletOffset));
             FireInputDir = new Vector3(-1, 0, 0);
             CanFire = false;

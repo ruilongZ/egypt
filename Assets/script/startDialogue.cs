@@ -59,16 +59,16 @@ public class startDialogue : MonoBehaviour
             sum += RewardingAndRate[i].rate;
         }
         int k = Random.Range(0,sum);
-        int j = RewardingAndRate[0].rate;
+        int j =0;
         for (int i = 0; i <RewardingAndRate.Length; i++)
         {
-            if (k <= j)
+            if (k <= j+ RewardingAndRate[i].rate)
             {
                 Instantiate(RewardingAndRate[i].reward, transform.position, Quaternion.identity);
                 break;
             }
             else {
-                j += RewardingAndRate[i+1].rate;
+                j += RewardingAndRate[i].rate;
             }
         }
     }

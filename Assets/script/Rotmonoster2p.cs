@@ -191,6 +191,14 @@ public class Rotmonoster2p : MonoBehaviour
                     }
                     break;
             }
+
+            if (life <= 0)
+            {
+                life = 0;
+                animator.SetTrigger("die");
+                collider.enabled = false;
+                Destroy(gameObject, 2.5f);
+            }
             setui();
             if (currenthit == hitcount)
             {

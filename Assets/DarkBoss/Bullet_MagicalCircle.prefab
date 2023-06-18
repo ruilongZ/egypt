@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba171631561c46b4dafcce24c7dcd68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagePerSec: 3
-  DestroyTime: 4
+  DamagePerSec: 5
+  DestroyTime: 6
   HealRate: 0.2
   SlowDownRate: 0.5
   DamageTime: 0.5
