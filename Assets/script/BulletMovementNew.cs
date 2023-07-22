@@ -73,6 +73,7 @@ public class BulletMovementNew : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public IEnumerator DestoryBullet() {
         animator.SetBool("destory", true);
         selfcollider.enabled = false;

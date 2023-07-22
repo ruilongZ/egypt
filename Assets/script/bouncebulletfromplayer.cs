@@ -16,19 +16,21 @@ public class bouncebulletfromplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     Vector3 hitpoint;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "playerbullet") {
-            hitpoint = other.bounds.ClosestPoint(transform.position);
-            switch (other.tag) {
-                case "playerbullet":
-                    Instantiate(bouncebullet, hitpoint, Quaternion.identity);
-                    break;
-            }
-
+        switch (other.tag)
+        {
+            case "playerbullet":
+                hitpoint = other.bounds.ClosestPoint(transform.position);
+                Instantiate(bouncebullet, hitpoint, Quaternion.identity);
+                break;
+            case "enemybullet":
+                hitpoint = other.bounds.ClosestPoint(transform.position);
+                Instantiate(enemybouncebullet, hitpoint, Quaternion.identity);
+                break;
         }
     }
 }

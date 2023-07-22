@@ -446,10 +446,13 @@ MonoBehaviour:
   - {fileID: 4340141423971468151}
   - {fileID: 7017967731543293848}
   - {fileID: 2261703204457903391}
-  enemy:
-  - {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
-  - {fileID: 4169091155759420838, guid: a179f4beb13631b4ca22782bfe9fb481, type: 3}
-  enemyNum: 0100000001000000
+  SpawnEnemy:
+  - enemyNum: 2
+    enemyType: {fileID: 4169091155759420838, guid: a179f4beb13631b4ca22782bfe9fb481, type: 3}
+  - enemyNum: 2
+    enemyType: {fileID: 4919685907788527388, guid: 1b7550f1ee0d5d64ea85e9a00b0709c8, type: 3}
+  - enemyNum: 2
+    enemyType: {fileID: 1347671421137615127, guid: 2cf758e11ca727a4cae30bf21e8edbfa, type: 3}
   boss: {fileID: 0}
   rewardgod:
   - {fileID: 4643896680313291135, guid: 7066d087ba8c5ad4db3880c6778a2f2d, type: 3}

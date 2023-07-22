@@ -22,10 +22,24 @@ public class singleroom : MonoBehaviour
     public Image smallmap;
     [Space]
     public GameObject[] door=new GameObject[4];
+
+
+    [System.Serializable]
+    public struct SpawnEnenyAndNum
+    {
+        public int enemyNum;
+        public GameObject enemyType;
+
+        public SpawnEnenyAndNum(int enemyNum, GameObject enemyType)
+        {
+            this.enemyNum = enemyNum;
+            this.enemyType = enemyType;
+        }
+    }
+
     [Space]
     [Header("generate enemy")]
-    public GameObject[] enemy = new GameObject[2];
-    public int[] enemyNum = new int[2];
+    public SpawnEnenyAndNum[] SpawnEnemy;
     [Space]
     [Header("generate boss")]
     public GameObject boss ;
@@ -124,12 +138,10 @@ public class singleroom : MonoBehaviour
     }
     IEnumerator GenerateEnemy() {
         yield return new WaitForSeconds(0.2f);
-        for (int i = 0; i < enemyNum[0]; i++) {
-            Instantiate(enemy[0], GetRandomPointInRoom(), Quaternion.identity);
-        }
-        for (int i = 0; i < enemyNum[1]; i++)
-        {
-            Instantiate(enemy[1], GetRandomPointInRoom(), Quaternion.identity);
+        foreach (SpawnEnenyAndNum i in SpawnEnemy) {
+            for (int j=0;j<i.enemyNum;j++) {
+                Instantiate(i.enemyType, GetRandomPointInRoom(), Quaternion.identity);
+            }
         }
     }
     IEnumerator GenerateBoss()
