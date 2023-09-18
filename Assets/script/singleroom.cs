@@ -16,6 +16,37 @@ public class singleroom : MonoBehaviour
      HiddenRoom,
     }
 
+    #region  贴图相关
+    [Header("RoomTexture")]
+    public Sprite basicroomtex;
+    public Sprite secretroomtex;
+    public Sprite rewardroomtex;
+    public Sprite bossroomtex;
+    public Sprite shoproomtex;
+    [Space]
+    [Header("DoorOpenTexture")]
+    public Sprite basicopendoortex;
+    public Sprite secretopendoortex;
+    public Sprite rewardopendoortex;
+    public Sprite bossopendoortex;
+    public Sprite shopopendoortex;
+    [Space]
+    [Header("DoorOpenTexture")]
+    public Sprite basicclosedoortex;
+    public Sprite secretclosedoortex;
+    public Sprite rewardclosedoortex;
+    public Sprite bossclosedoortex;
+    public Sprite shopclosedoortex;
+    #endregion
+
+    #region 控制贴图对象
+    [Space]
+    [Header("doors and walls")]
+    public SpriteRenderer[] opendoor;
+    public SpriteRenderer[] closedoor;
+    #endregion
+
+    [Space]
     [Header("basic")]
     public bool PlayerIsInRoom = false;
     public RoomKind RoomType=RoomKind.EnemyRoom;
@@ -37,6 +68,7 @@ public class singleroom : MonoBehaviour
         }
     }
 
+    #region 自动生成房间内相关
     [Space]
     [Header("generate enemy")]
     public SpawnEnenyAndNum[] SpawnEnemy;
@@ -52,11 +84,74 @@ public class singleroom : MonoBehaviour
     [Space]
     [Header("generate fairy")]
     public GameObject[] fairy=new GameObject[2];
+    #endregion
 
+    #region 摄像机控制与私有变量
     private CinemachineVirtualCamera CamVC;
     private GameObject roomcontrol;
     private bool PlayerFirstEnter=false;
-    // Start is called before the first frame update
+    #endregion
+
+    private void Awake()
+    {
+        switch (RoomType) {
+            case RoomKind.StartRoom:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = basicroomtex;
+                foreach (SpriteRenderer j in opendoor) {
+                    j.sprite = basicopendoortex;
+                }
+                foreach (SpriteRenderer k in closedoor)
+                {
+                    k.sprite = basicclosedoortex;
+                }
+                break;
+            case RoomKind.ShopRoom:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shoproomtex;
+                foreach (SpriteRenderer j in opendoor)
+                {
+                    j.sprite =shopopendoortex;
+                }
+                foreach (SpriteRenderer k in closedoor)
+                {
+                    k.sprite = shopclosedoortex;
+                }
+                break;
+            case RoomKind.BossRoom:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =bossroomtex;
+                foreach (SpriteRenderer j in opendoor)
+                {
+                    j.sprite = bossopendoortex;
+                }
+                foreach (SpriteRenderer k in closedoor)
+                {
+                    k.sprite = bossclosedoortex;
+                }
+                break;
+            case RoomKind.RewardRoom:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =rewardroomtex;
+                foreach (SpriteRenderer j in opendoor)
+                {
+                    j.sprite = rewardopendoortex;
+                }
+                foreach (SpriteRenderer k in closedoor)
+                {
+                    k.sprite = rewardclosedoortex;
+                }
+                break;
+            case RoomKind.HiddenRoom:
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = secretroomtex;
+                foreach (SpriteRenderer j in opendoor)
+                {
+                    j.sprite = secretopendoortex;
+                }
+                foreach (SpriteRenderer k in closedoor)
+                {
+                    k.sprite = secretclosedoortex;
+                }
+                break;
+        }
+    }
+
     void Start()
     {
         CamVC = GetComponent<CinemachineVirtualCamera>();

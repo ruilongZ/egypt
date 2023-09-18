@@ -438,6 +438,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86094a3ee2dae64d9aa274429d2a10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicroomtex: {fileID: 21300000, guid: 1e3eac2e30a919248a60dec55a6e1de7, type: 3}
+  secretroomtex: {fileID: 21300000, guid: bf58bf2410ad19b4f9eef1655b9a14bc, type: 3}
+  rewardroomtex: {fileID: 21300000, guid: 8b362bf309ad0d54385e57dbd77d16a6, type: 3}
+  bossroomtex: {fileID: 21300000, guid: a1c1317cba6acbe4cad54c79fad9540a, type: 3}
+  shoproomtex: {fileID: 21300000, guid: 18ce0b8d7168864409ad834ecdd1ea26, type: 3}
+  basicopendoortex: {fileID: 21300000, guid: 427e697dd9d65bf4abfd4e8931c9dd8b, type: 3}
+  secretopendoortex: {fileID: 21300000, guid: 9a7c5a7f71bec924e88706807e1d2652, type: 3}
+  rewardopendoortex: {fileID: 21300000, guid: 6433dcc4979d4b34bbe73d9e5d8260c4, type: 3}
+  bossopendoortex: {fileID: 21300000, guid: c3b7583ab5dbe49408d525ba3ce0d197, type: 3}
+  shopopendoortex: {fileID: 21300000, guid: f7d2f9caf06093444918c4c7b8fb63eb, type: 3}
+  basicclosedoortex: {fileID: 21300000, guid: bd422d65d6050bc448031212b7e62a3d, type: 3}
+  secretclosedoortex: {fileID: 21300000, guid: baa236a4c344d3c4d8de10465c2b2876, type: 3}
+  rewardclosedoortex: {fileID: 21300000, guid: d2dbcaa1de04abc45b96b1d9c158c9c3, type: 3}
+  bossclosedoortex: {fileID: 21300000, guid: 40db4b04a3d748346aea3fb3a1232551, type: 3}
+  shopclosedoortex: {fileID: 21300000, guid: 9e93c82b20b91e44f9d559eb529f73d5, type: 3}
+  opendoor:
+  - {fileID: 3532865975921855172}
+  - {fileID: 6369971740711147974}
+  - {fileID: 7072514636856701713}
+  - {fileID: 547021947820115332}
+  closedoor:
+  - {fileID: 1283694469467277383}
+  - {fileID: 7629766446972234585}
+  - {fileID: 6050155943889710031}
+  - {fileID: 7339313988447266670}
   PlayerIsInRoom: 0
   RoomType: 0
   smallmap: {fileID: 0}
