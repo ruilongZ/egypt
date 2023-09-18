@@ -54,7 +54,6 @@ public class stoneenemymove : MonoBehaviour
             }
         }
         animator.SetFloat("x", dir.x * 10);
-        Debug.Log(currentspeed);
     }
 
     Vector3 randomDir()
